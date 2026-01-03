@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>COL-Referral</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+<header class="nav">
+  <div class="container nav-inner">
+    <div class="site-logo">
+      <img src="logo01.png" alt="COL Logo">
+    </div>
+
+    <!-- ✅ Mobile menu toggle -->
+    <button id="menuToggle" class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+      ☰
+    </button>
+
+    <!-- ✅ Give nav an id so JS can toggle it -->
+    <nav class="nav-links" id="mainNav">
+      <a href="#" class="nav-link">হোম</a>
+
+      <div class="nav-dd">
+        <!-- (Your first dropdown had no label; I kept it minimal but usable) -->
+        <button class="nav-link dd-btn" type="button">
+          প্যাকেজ <span class="dd-arrow">▾</span>
+        </button>
+        <div class="dd-menu">
+          <a href="#">প্যাকেজ A</a>
+          <a href="#">প্যাকেজ B</a>
+          <a href="#">প্যাকেজ C</a>
+        </div>
+      </div>
+
+      <div class="nav-dd">
+        <button class="nav-link dd-btn" type="button">
+          কভারেজ <span class="dd-arrow">▾</span>
+        </button>
+        <div class="dd-menu">
+          <a href="#">কভারেজ 1</a>
+          <a href="#">কভারেজ 2</a>
+        </div>
+      </div>
+
+      <a href="#" class="nav-link active">রেফারেল</a>
+      <a href="#" class="nav-link">সাপোর্ট</a>
+
+      <!-- ✅ Language dropdown inside nav for mobile (optional but useful) -->
+      <div class="nav-dd lang-dd mobile-lang">
+        <button id="langToggleMobile" class="nav-link dd-btn" type="button" aria-expanded="false">
+          BN <span class="dd-arrow">▾</span>
+        </button>
+        <div id="langMenuMobile" class="dd-menu dd-menu-right">
+          <a href="#">EN</a>
+          <a href="#">BN</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="nav-dd lang-dd">
+		<button class="lang dd-btn" type="button">
+			বাং <span class="dd-arrow">▾</span>
+		</button>
+		<div class="dd-menu dd-menu-right">
+			<a href="index.html">EN</a>
+			<a href="index-bn.html">বাং</a>
+		</div>
+	</div>
+</header>
+
+
+  <!-- MAIN -->
+  <main class="hero">
+    <div class="container hero-grid">
+
+      <!-- LEFT -->
+      <section class="hero-left">
+        <div class="hero-graphic">
+          <!-- Put your image here: assets/hero-person.png -->
+          <img src="../assets/images/hero-person.png" alt="Megaphone person" class="hero-person">
+          <div class="hero-circle"></div>
+          <div class="hero-wave"></div>
+        </div>
+
+        <h1 class="hero-title">
+          বন্ধুদের রেফার করে,<br/>
+          বিলে <span class="money"><span class="taka">৫০০৳</span> ডিসকাউন্ট পান</span>
+        </h1>
+        <p class="hero-subtitle">প্রতি রেফারালে</p>
+
+        <div class="hero-actions">
+          <a href="#" class="link-btn">জানুন কীভাবে এটা কাজ করে</a>
+          <a href="#" class="ghost-btn">প্রশ্নোত্তর দেখুন</a>
+        </div>
+      </section>
+
+      <!-- RIGHT CARD -->
+      <section class="hero-right">
+        <div class="card">
+          <div class="card-top">
+            <div class="card-top-left">
+              <div class="card-top-title">রেফার শুরু করুন</div>
+              <div class="card-top-sub">৫০০৳ ডিসকাউন্ট পেতে তথ্যগুলো পূরণ করুন</div>
+            </div>
+
+            <!-- TRACK REFERRAL BUTTON -->
+            <a href="#" class="track" id="trackBtn">
+              রেফারেল ট্র্যাক করুন
+              <span class="track-arrow">›</span>
+            </a>
+          </div>
+
+          <div class="card-body">
+            <div class="steps">
+              <div class="step active">
+                <span class="step-dot">✓</span>
+                <span class="step-text">আপনার তথ্য</span>
+              </div>
+              <div class="step-line"></div>
+              <div class="step">
+                <span class="step-dot">2</span>
+                <span class="step-text">বন্ধুর তথ্য</span>
+              </div>
+            </div>
+
+            <form id="refForm" class="form">
+              <label class="label" for="customerId">গ্রাহক মোবাইল নাম্বার</label>
+              <input id="customerId" class="input" type="text" placeholder="0181XXXXXXXX" autocomplete="off" />
+
+              <label class="label" for="fullName">নাম</label>
+              <input id="fullName" class="input" type="text" placeholder="আপনার পূর্ণ নাম লিখুন" autocomplete="off" />
+
+              <button id="continueBtn" class="btn" type="button" disabled>জমা দিন</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- TRACK MODAL (Image 5) -->
+  <div id="trackOverlay" class="overlay hidden" aria-hidden="true">
+    <div class="modal track-modal" role="dialog" aria-modal="true" aria-labelledby="trackTitle">
+      <button class="modal-close" id="trackClose" aria-label="Close">×</button>
+
+      <h2 id="trackTitle" class="modal-title track-title">Track Your Referral</h2>
+      <p class="modal-sub track-sub">
+        Enter your customer ID and track your referral
+      </p>
+
+      <form id="trackForm" class="form track-form">
+        <label class="label" for="trackCustomerId">Customer ID</label>
+        <input id="trackCustomerId" class="input" type="text" placeholder="Enter your customer ID" autocomplete="off"/>
+
+        <label class="label" for="trackName">Name</label>
+        <input id="trackName" class="input" type="text" placeholder="Enter your name" autocomplete="off"/>
+
+        <button id="trackContinueBtn" class="btn btn-wide" type="button" disabled>Continue</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- OTP MODAL (Used by BOTH flows) -->
+  <div id="otpOverlay" class="overlay hidden" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="otpTitle">
+      <button class="modal-close" id="otpClose" aria-label="Close">×</button>
+
+      <div class="modal-icon">
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none">
+          <path d="M7 10V8a5 5 0 0 1 10 0v2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M7 10h10a2 2 0 0 1 2 2v6a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3v-6a2 2 0 0 1 2-2Z"
+                stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+          <path d="M12 14v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <h2 id="otpTitle" class="modal-title">Verify It’s You</h2>
+      <p id="otpSub" class="modal-sub">
+        Check your phone for a 6-digit OTP and
+        enter it here to verify it’s you.
+      </p>
+
+      <div class="otp" id="otpBoxes">
+        <input class="otp-box" inputmode="numeric" maxlength="1" />
+        <input class="otp-box" inputmode="numeric" maxlength="1" />
+        <input class="otp-box" inputmode="numeric" maxlength="1" />
+        <input class="otp-box" inputmode="numeric" maxlength="1" />
+        <input class="otp-box" inputmode="numeric" maxlength="1" />
+        <input class="otp-box" inputmode="numeric" maxlength="1" />
+      </div>
+
+      <!-- TIMER (Only show for Track flow) -->
+      <div id="otpTimer" class="otp-timer hidden">Resend code in <span id="otpTimeText">2:00</span></div>
+
+      <button id="verifyBtn" class="btn btn-wide" type="button" disabled>Verify</button>
+
+      <div class="modal-links">
+        <div class="resend">
+          Don’t have a code?
+          <a href="#" id="resendLink">Resend code</a>
+        </div>
+
+        <a href="#" class="return" id="returnLink">‹ Return to sign in</a>
+      </div>
+    </div>
+  </div>
+  <!-- HOW IT WORKS -->
+	<section class="how-section" id="how">
+	  <div class="container">
+		<h2 class="how-title">এটা কীভাবে কাজ করে</h2>
+		<p class="how-subtitle">
+		  ৪টি সহজ ধাপে আজই শুরু করুন। কোন জটিল প্রক্রিয়া নয়, শুধুমাত্র রেফার করে ডিসকাউন্ট পান!
+		</p>
+
+		<div class="how-steps">
+
+		  <!-- Step 1 -->
+		  <div class="how-step">
+			<div class="how-icon">
+			  <!-- form icon -->
+			  <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+				<path d="M8 7h8M8 11h8M8 15h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+				<path d="M7 3h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"
+					  stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+			  </svg>
+			</div>
+			<div class="how-text">
+			  <div class="how-step-title">১. ফর্ম পূরণ করুন</div>
+			  <div class="how-step-desc">
+				আপনার তথ্য ও প্রয়োজনীয় ঘরগুলো সঠিকভাবে পূরণ করুন।
+			  </div>
+			</div>
+		  </div>
+
+		  <div class="how-divider"></div>
+
+		  <!-- Step 2 -->
+		  <div class="how-step">
+			<div class="how-icon">
+			  <!-- user icon -->
+			  <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+				<path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Z"
+					  stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+				<path d="M4 21a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+			  </svg>
+			</div>
+			<div class="how-text">
+			  <div class="how-step-title">২. বন্ধু সাবস্ক্রাইব করবে</div>
+			  <div class="how-step-desc">
+				আপনার রেফার করা বন্ধু নতুন কানেকশন/সাবস্ক্রিপশন নেবে।
+			  </div>
+			</div>
+		  </div>
+
+		  <div class="how-divider"></div>
+
+		  <!-- Step 3 -->
+		  <div class="how-step">
+			<div class="how-icon">
+			  <!-- gift icon -->
+			  <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+				<path d="M20 12v9H4v-9" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+				<path d="M22 7H2v5h20V7Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+				<path d="M12 7v14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+				<path d="M12 7h-3.5a2.5 2.5 0 1 1 0-5C11 2 12 7 12 7Z"
+					  stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+				<path d="M12 7h3.5a2.5 2.5 0 1 0 0-5C13 2 12 7 12 7Z"
+					  stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+			  </svg>
+			</div>
+			<div class="how-text">
+			  <div class="how-step-title">৩. ডিসকাউন্ট আয় করুন</div>
+			  <div class="how-step-desc">
+				সফল রেফারাল হলে আপনার বিলেতে ডিসকাউন্ট যোগ হবে।
+			  </div>
+			</div>
+		  </div>
+
+		  <div class="how-divider"></div>
+
+		  <!-- Step 4 -->
+		  <div class="how-step">
+			<div class="how-icon">
+			  <!-- repeat icon -->
+			  <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+				<path d="M20 7h-6a5 5 0 0 0-5 5v1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+				<path d="M4 17h6a5 5 0 0 0 5-5v-1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+				<path d="M18 5l2 2-2 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+				<path d="M6 19l-2-2 2-2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+			  </svg>
+			</div>
+			<div class="how-text">
+			  <div class="how-step-title">৪. রেফার করতে থাকুন</div>
+			  <div class="how-step-desc">
+				একাধিক বন্ধুকে রেফার করে আরও বেশি ডিসকাউন্ট পেতে থাকুন।
+			  </div>
+			</div>
+		  </div>
+
+		</div>
+	  </div>
+	</section>
+
+	<!-- BENEFIT VIDEO SECTION -->
+<section class="benefit-video-section">
+  <div class="container">
+    <div class="benefit-grid">
+
+      <div class="benefit-media">
+        <span class="benefit-blob benefit-blob-left" aria-hidden="true"></span>
+        <span class="benefit-blob benefit-blob-right" aria-hidden="true"></span>
+
+        <div class="benefit-video-card" id="benefitCard">
+          <video
+            class="benefit-video"
+            id="benefitVideo"
+            src="assets/referral-demo.mp4"
+            preload="metadata"
+            playsinline
+          ></video>
+
+          <button class="benefit-play" id="benefitPlayBtn" type="button" aria-label="Play video">
+            ▶
+          </button>
+        </div>
+      </div>
+
+      <div class="benefit-content">
+        <h2 class="benefit-title">প্রতি রেফারেলের এর<br>
+            মাধ্যমে আপনি কিভাবে<br>
+            উপকৃত হবেন</h2>
+        <p class="benefit-desc">
+          রেফারেল প্রক্রিয়া কীভাবে কাজ করে এবং আপনি কীভাবে পুরস্কার অর্জন করতে পারেন,
+            তা জানতে এই ছোট ভিডিওটি দেখুন।
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+	
+	<!-- CTA SECTION -->
+	<section class="cta-section" id="cta">
+	  <div class="container">
+		<div class="cta-card">
+		  <!-- decorative shapes -->
+		  <span class="cta-shape cta-shape-1"></span>
+		  <span class="cta-shape cta-shape-2"></span>
+		  <span class="cta-shape cta-shape-3"></span>
+
+		  <h2 class="cta-title">তাদের সাথে যোগ দিতে প্রস্তুত?</h2>
+		  <p class="cta-subtitle">
+			আজই রেফার করা শুরু করুন এবং আপনার আয় বাড়াতে দেখুন।<br>
+			আপনার প্রথম রেফারেল জমা দিতে নিচের বাটনে চাপুন!
+		  </p>
+
+		  <button class="cta-btn" type="button" id="ctaBtn">
+			আপনার প্রথম রেফারেল জমা দিন
+		  </button>
+		</div>
+	  </div>
+	</section>
+	
+	<!-- FAQ SECTION -->
+	<section class="faq-section" id="faq">
+	  <div class="container faq-wrap">
+		<h2 class="faq-title">সচারাচর জিজ্ঞাস্য</h2>
+
+		<div class="faq-card">
+
+		  <!-- item 1 -->
+		  <div class="faq-item">
+			<button class="faq-q" type="button" aria-expanded="false">
+			  <span>Refer a Friend Scheme কী?</span>
+			  <span class="faq-icon">▾</span>
+			</button>
+			<div class="faq-a">
+			  <p>
+				1.	একজন COL Broadband গ্রাহক হিসেবে, আপনি যেকোনো বন্ধুকে সফলভাবে COL Broadband–এ সংযোগ করালে প্রতি রেফারেলের জন্য আপনার মাসিক বিলে ৫০০ টাকা ছাড় পেতে পারেন। এই অফারটি পেতে রেফারেল অবশ্যই <a href="https://www.colbd.com/php_files/standard/user_home/user_home.php?home=yes&tm=main">referral.colbd.com</a> ওয়েবসাইটের মাধ্যমে জমা দিতে হবে।
+			  </p>
+			</div>
+		  </div>
+
+		  <!-- item 2 -->
+		  <div class="faq-item">
+			<button class="faq-q" type="button" aria-expanded="false">
+			  <span>আমি কখন একজন বন্ধুকে রেফার করতে পারি?</span>
+			  <span class="faq-icon">▾</span>
+			</button>
+			<div class="faq-a">
+			  <p>
+				আপনি যদি একজন সক্রিয় COL Broadband গ্রাহক হন, তাহলে যেকোনো দিন ও যেকোনো সময় আপনার বন্ধুকে রেফার করতে পারবেন।
+			  </p>
+			</div>
+		  </div>
+
+		  <!-- item 3 -->
+		  <div class="faq-item">
+			<button class="faq-q" type="button" aria-expanded="false">
+			  <span>আমি কি এই অফারের জন্য যোগ্য?</span>
+			  <span class="faq-icon">▾</span>
+			</button>
+			<div class="faq-a">
+			  <p>
+				হ্যাঁ — আপনি যদি একজন সক্রিয় COL Broadband গ্রাহক হন, তাহলে আপনি এই অফারের জন্য যোগ্য। তবে Special Customer (যার মধ্যে এন্টারপ্রাইজ ও কাস্টমাইজড প্রাইসিং চুক্তিভুক্ত গ্রাহকরা অন্তর্ভুক্ত), ডেমো বা টেস্ট অ্যাকাউন্ট, বিজনেস পার্টনার বা ট্রেড এন্টিটি, SDO বা রিসেলার অ্যাকাউন্ট, এবং প্রমোশনাল বা কমপ্লিমেন্টারি ক্লায়েন্টরা বর্তমানে এই অফারের আওতায় নাও আসতে পারেন।
+			  </p>
+			</div>
+		  </div>
+
+		  <!-- item 4 -->
+		  <div class="faq-item">
+			<button class="faq-q" type="button" aria-expanded="false">
+			  <span>আমার বন্ধু কি এই অফারের জন্য যোগ্য?</span>
+			  <span class="faq-icon">▾</span>
+			</button>
+			<div class="faq-a">
+			  <ul>
+				<p>আপনার বন্ধুকে অবশ্যই—</p>
+				<ul>
+					<li style="font-size: 12px;">COL Broadband–এর সংযোগ সুবিধা রয়েছে এমন এলাকায় বসবাস করতে হবে (চট্টগ্রাম মেট্রোপলিটন এলাকা অথবা কক্সবাজার), <strong>এবং</strong></li>
+				<li style="font-size: 12px;">আগে থেকে COL Broadband–এর গ্রাহক হওয়া যাবে না।</li>
+				</ul>
+				<p>উপরের শর্তগুলো পূরণ হলে আপনার বন্ধু এই অফারের জন্য যোগ্য হবে।</p>
+			  </ul>
+			</div>
+		  </div>
+
+		  <!-- item 5 -->
+		  <div class="faq-item">
+			<button class="faq-q" type="button" aria-expanded="false">
+			  <span>আমি কি একাধিক বন্ধুকে রেফার করতে পারি?</span>
+			  <span class="faq-icon">▾</span>
+			</button>
+			<div class="faq-a">
+			  <p>
+				অবশ্যই! আপনি ইচ্ছামতো যতজন বন্ধুকে রেফার করতে পারেন। প্রতি সফল রেফারেলের জন্য আপনি ৫০০ টাকা ছাড় পাবেন, তবে মাসিক সর্বোচ্চ ছাড়ের সীমা ৫০০ টাকা। একাধিক বন্ধুকে রেফার করলে অবশিষ্ট ক্রেডিট পরবর্তী মাসগুলোতে সমন্বয় করা হবে। <br>
+				উদাহরণ: আপনি যদি ৩ জন বন্ধুকে সফলভাবে সংযোগ করাতে পারেন, তাহলে পরবর্তী ৩ মাস ধরে প্রতি মাসে আপনার বিলে ৫০০ টাকা করে ছাড় পাবেন।
+			  </p>
+			</div>
+		  </div>
+
+		  <!-- item 6 -->
+		  <div class="faq-item">
+			<button class="faq-q" type="button" aria-expanded="false">
+			  <span>আমি কখন আমার ৫০০ টাকার ক্রেডিট পাব?</span>
+			  <span class="faq-icon">▾</span>
+			</button>
+			<div class="faq-a">
+			  <p>
+				আপনার বন্ধুর সংযোগ সক্রিয় হওয়ার পর পরবর্তী বিলিং সাইকেলে আপনি ৫০০ টাকা ক্রেডিট পাবেন। রেফারেল ফর্ম জমা দেওয়ার সাথে সাথেই এই ক্রেডিট পাওয়া যাবে না; এটি পরবর্তী বিলে যুক্ত হবে। <br>
+				এই সুবিধা পেতে ক্রেডিট যুক্ত হওয়ার সময় আপনার অ্যাকাউন্ট এবং আপনার বন্ধুর অ্যাকাউন্ট—উভয়ই সক্রিয় থাকতে হবে।
+			  </p>
+			</div>
+		  </div>
+
+		  <!-- item 7 -->
+		  <div class="faq-item">
+			<button class="faq-q" type="button" aria-expanded="false">
+			  <span>আমার বন্ধু কখন তার ৫০০ টাকার ক্রেডিট পাবে?</span>
+			  <span class="faq-icon">▾</span>
+			</button>
+			<div class="faq-a">
+			  <p>
+				আপনার বন্ধু সংযোগ সক্রিয় হওয়ার পর তার প্রথম বিলেই ৫০০ টাকা ছাড় পাবেন।
+			  </p>
+			</div>
+		  </div>
+
+		  <!-- item 8 -->
+		  <div class="faq-item">
+			<button class="faq-q" type="button" aria-expanded="false">
+			  <span>এই অফারের জন্য কি কোনো সময়সীমা আছে?</span>
+			  <span class="faq-icon">▾</span>
+			</button>
+			<div class="faq-a">
+			  <p>
+				হ্যাঁ, এটি Chittagong Online Limited (COL)–এর একটি সীমিত সময়ের প্রমোশনাল অফার। কোনো পূর্ব নোটিশ ছাড়াই COL যে কোনো সময় এই অফার পরিবর্তন, স্থগিত বা বাতিল করার অধিকার সংরক্ষণ করে। <br>
+				বিস্তারিত জানার জন্য অনুগ্রহ করে COL ওয়েবসাইটে প্রকাশিত অফিসিয়াল <a href="https://www.colbd.com/php_files/standard/user_home/user_home.php?home=yes&tm=main">Terms &amp; Conditions</a> দেখুন।
+			  </p>
+			</div>
+		  </div>
+
+		</div>
+	  </div>
+	</section>
+
+  
+  <!-- FOOTER -->
+	<footer class="site-footer">
+	  <div class="footer-wrap container">
+
+		<!-- Top grid -->
+		<div class="footer-grid">
+
+		  <!-- Left: Logo + description + newsletter -->
+		  <div class="footer-col footer-brand">
+			<div class="site-logo">
+				<img src="logo01.png" alt="COL Logo">
+			</div>
+
+			<p class="footer-desc">
+			  	বাংলাদেশের সবচেয়ে জনপ্রিয় ও নির্ভরযোগ্য অনলাইন সেবা প্রদানকারী প্রতিষ্ঠান।
+           		আপনার প্রয়োজনীয় তথ্য/সেবা সহজে পেতে আমাদের সাথে থাকুন।
+			</p>
+		  </div>
+
+		  <!-- Products -->
+		  <div class="footer-col">
+			<div class="footer-title">প্রোডাক্টস</div>
+			<ul class="footer-links">
+			  <li><a href="#">হোম ইন্টারনেট</a></li>
+			  <li><a href="#">বিজনেস প্ল্যান</a></li>
+			  <li><a href="#">ইন্টারপ্রাইজ সল্যুশন</a></li>
+			  <li><a href="#">আইপি টিভি সেবা</a></li>
+			</ul>
+		  </div>
+
+		  <!-- Company -->
+		  <div class="footer-col">
+			<div class="footer-title">কোম্পানি</div>
+			<ul class="footer-links">
+			  <li><a href="#">আমাদের সম্পর্কে</a></li>
+			  <li><a href="#">কভারেজ এলাকা</a></li>
+			  <li><a href="#">ক্যারিয়ার</a></li>
+			  <li><a href="#">যোগাযোগ</a></li>
+			</ul>
+		  </div>
+
+		  <!-- Support -->
+		  <div class="footer-col">
+			<div class="footer-title">সাপোর্ট</div>
+			<ul class="footer-links">
+			  <li><a href="#">হেল্প সেন্টার</a></li>
+			  <li><a href="#">রেফারেল প্রোগ্রাম</a></li>
+			  <li><a href="#">কমপ্লেইন পোর্টাল</a></li>
+			  <li><a href="#">পেমেন্ট অপশন</a></li>
+			</ul>
+		  </div>
+		</div>
+
+		<!-- MIDDLE ROW (Newsletter left + Social right) -->
+		<div class="footer-mid">
+		  <div class="footer-mid-left">
+			<div class="footer-small-title">আমাদের নিউজলেটারে সাবস্ক্রাইব করুন</div>
+
+			<form class="newsletter-form" id="newsletterForm">
+			  <input
+				type="email"
+				id="newsletterEmail"
+				class="newsletter-input"
+				placeholder="আপনার ইমেইল প্রদান করুন"
+				required
+			  />
+			  <button type="submit" class="newsletter-btn">সাবস্ক্রাইব</button>
+			</form>
+		  </div>
+
+		  <div class="footer-mid-right">
+			<div class="footer-social">
+			  <a class="social-btn" href="#" aria-label="Facebook">
+				<i class="fab fa-facebook-f"></i>
+			  </a>
+
+			  <a class="social-btn" href="#" aria-label="X">
+				<i class="fab fa-twitter"></i>
+			  </a>
+
+			  <a class="social-btn" href="#" aria-label="Instagram">
+				<i class="fab fa-instagram"></i>
+			  </a>
+
+			  <a class="social-btn" href="#" aria-label="LinkedIn">
+				<i class="fab fa-linkedin-in"></i>
+			  </a>
+
+			  <a class="social-btn" href="#" aria-label="YouTube">
+				<i class="fab fa-youtube"></i>
+			  </a>
+			</div>
+		  </div>
+		</div>
+
+		<!-- BOTTOM ROW (Copyright left + Legal right) -->
+		<div class="footer-bottom">
+		  <div class="footer-copy">© ২০২৫ সিওএল বাংলাদেশ। সর্বস্বত্ব সংরক্ষিত।</div>
+
+		  <div class="footer-legal">
+			<a href="#">শর্তাবলী</a>
+			<a href="#">গোপনীয়তা নীতি</a>
+			<a href="#">ব্যবহারের নিয়মাবলি</a>
+			<a href="#">পেমেন্ট নীতি</a>
+		  </div>
+		</div>
+
+
+	  </div>
+	</footer>
+
+
+  <script src="script.js"></script>
+</body>
+</html>

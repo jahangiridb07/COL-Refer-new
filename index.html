@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>COL-Referral</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+<header class="nav">
+  <div class="container nav-inner">
+    <div class="site-logo">
+      <img src="logo01.png" alt="COL Logo">
+    </div>
+
+    <!-- ✅ Mobile menu toggle -->
+    <button id="menuToggle" class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+      ☰
+    </button>
+
+    <!-- ✅ Give nav an id so JS can toggle it -->
+    <nav class="nav-links" id="mainNav">
+      <a href="#" class="nav-link">Home</a>
+
+      <div class="nav-dd">
+        <!-- (Your first dropdown had no label; I kept it minimal but usable) -->
+        <button class="nav-link dd-btn" type="button">
+          Package <span class="dd-arrow">▾</span>
+        </button>
+        <div class="dd-menu">
+          <a href="#">Plan A</a>
+          <a href="#">Plan B</a>
+          <a href="#">Plan C</a>
+        </div>
+      </div>
+
+      <div class="nav-dd">
+        <button class="nav-link dd-btn" type="button">
+          Coverage <span class="dd-arrow">▾</span>
+        </button>
+        <div class="dd-menu">
+          <a href="#">Coverage 1</a>
+          <a href="#">Coverage 2</a>
+        </div>
+      </div>
+
+      <a href="#" class="nav-link active">Referral</a>
+      <a href="#" class="nav-link">Support</a>
+
+      <!-- ✅ Language dropdown inside nav for mobile (optional but useful) -->
+      <div class="nav-dd lang-dd mobile-lang">
+        <button id="langToggleMobile" class="nav-link dd-btn" type="button" aria-expanded="false">
+          EN <span class="dd-arrow">▾</span>
+        </button>
+        <div id="langMenuMobile" class="dd-menu dd-menu-right">
+          <a href="#">EN</a>
+          <a href="#">BN</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="nav-dd lang-dd">
+		<button class="lang dd-btn" type="button">
+			EN <span class="dd-arrow">▾</span>
+		</button>
+		<div class="dd-menu dd-menu-right">
+			<a href="index.html">EN</a>
+			<a href="index-bn.html">BN</a>
+		</div>
+	</div>
+</header>
+
+
+  <!-- MAIN -->
+  <main class="hero">
+    <div class="container hero-grid">
+
+      <!-- LEFT -->
+      <section class="hero-left">
+        <div class="hero-graphic">
+          <!-- Put your image here: assets/hero-person.png -->
+          <img src="assets/images/hero-person.png" alt="Megaphone person" class="hero-person">
+          <div class="hero-circle"></div>
+          <div class="hero-wave"></div>
+        </div>
+
+        <h1 class="hero-title">
+          Refer Friends,<br/>
+          Earn <span class="money"><span class="taka">৳</span>500</span>
+        </h1>
+        <p class="hero-subtitle">for Every Referral</p>
+
+        <div class="hero-actions">
+          <a href="#" class="link-btn">Learn how it work</a>
+          <a href="#" class="ghost-btn">View FAQ</a>
+        </div>
+      </section>
+
+      <!-- RIGHT CARD -->
+      <section class="hero-right">
+        <div class="card">
+          <div class="card-top">
+            <div class="card-top-left">
+              <div class="card-top-title">Start Referring</div>
+              <div class="card-top-sub">Fill in the details to earn ৳500</div>
+            </div>
+
+            <!-- TRACK REFERRAL BUTTON -->
+            <a href="#" class="track" id="trackBtn">
+              Track Referral
+              <span class="track-arrow">›</span>
+            </a>
+          </div>
+
+          <div class="card-body">
+            <div class="steps">
+              <div class="step active">
+                <span class="step-dot">1</span>
+                <span class="step-text">Your Information</span>
+              </div>
+              <div class="step-line"></div>
+              <div class="step">
+                <span class="step-dot">2</span>
+                <span class="step-text">Friend Information</span>
+              </div>
+            </div>
+
+            <form id="refForm" class="form">
+              <label class="label" for="customerId">Customer ID</label>
+              <input id="customerId" class="input" type="text" placeholder="Enter your customer ID" autocomplete="off" />
+
+              <label class="label" for="fullName">Name</label>
+              <input id="fullName" class="input" type="text" placeholder="Enter your name" autocomplete="off" />
+
+              <button id="continueBtn" class="btn" type="button" disabled>Continue</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- TRACK MODAL (Image 5) -->
+  <div id="trackOverlay" class="overlay hidden" aria-hidden="true">
+    <div class="modal track-modal" role="dialog" aria-modal="true" aria-labelledby="trackTitle">
+      <button class="modal-close" id="trackClose" aria-label="Close">×</button>
+
+      <h2 id="trackTitle" class="modal-title track-title">Track Your Referral</h2>
+      <p class="modal-sub track-sub">
+        Enter your customer ID and track your referral
+      </p>
+
+      <form id="trackForm" class="form track-form">
+        <label class="label" for="trackCustomerId">Customer ID</label>
+        <input id="trackCustomerId" class="input" type="text" placeholder="Enter your customer ID" autocomplete="off"/>
+
+        <label class="label" for="trackName">Name</label>
+        <input id="trackName" class="input" type="text" placeholder="Enter your name" autocomplete="off"/>
+
+        <button id="trackContinueBtn" class="btn btn-wide" type="button" disabled>Continue</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- OTP MODAL (Used by BOTH flows) -->
+  <div id="otpOverlay" class="overlay hidden" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="otpTitle">
+      <button class="modal-close" id="otpClose" aria-label="Close">×</button>
+
+      <div class="modal-icon">
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none">
+          <path d="M7 10V8a5 5 0 0 1 10 0v2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M7 10h10a2 2 0 0 1 2 2v6a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3v-6a2 2 0 0 1 2-2Z"
+                stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+          <path d="M12 14v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <h2 id="otpTitle" class="modal-title">Verify It’s You</h2>
+      <p id="otpSub" class="modal-sub">
+        Check your phone for a 6-digit OTP and
+        enter it here to verify it’s you.
+      </p>
+
+      <div class="otp" id="otpBoxes">
+        <input class="otp-box" inputmode="numeric" maxlength="1" />
+        <input class="otp-box" inputmode="numeric" maxlength="1" />
+        <input class="otp-box" inputmode="numeric" maxlength="1" />
+        <input class="otp-box" inputmode="numeric" maxlength="1" />
+        <input class="otp-box" inputmode="numeric" maxlength="1" />
+        <input class="otp-box" inputmode="numeric" maxlength="1" />
+      </div>
+
+      <!-- TIMER (Only show for Track flow) -->
+      <div id="otpTimer" class="otp-timer hidden">Resend code in <span id="otpTimeText">2:00</span></div>
+
+      <button id="verifyBtn" class="btn btn-wide" type="button" disabled>Verify</button>
+
+      <div class="modal-links">
+        <div class="resend">
+          Don’t have a code?
+          <a href="#" id="resendLink">Resend code</a>
+        </div>
+
+        <a href="#" class="return" id="returnLink">‹ Return to sign in</a>
+      </div>
+    </div>
+  </div>
+  <!-- HOW IT WORKS -->
+	<section class="how-section" id="how">
+	  <div class="container">
+		<h2 class="how-title">How It Works</h2>
+		<p class="how-subtitle">
+		  Start earning in 4 simple steps. No complicated process, just refer and earn!
+		</p>
+
+		<div class="how-steps">
+
+		  <!-- Step 1 -->
+		  <div class="how-step">
+			<div class="how-icon">
+			  <!-- form icon -->
+			  <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+				<path d="M8 7h8M8 11h8M8 15h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+				<path d="M7 3h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"
+					  stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+			  </svg>
+			</div>
+			<div class="how-text">
+			  <div class="how-step-title">1. Fill the Form</div>
+			  <div class="how-step-desc">
+				Enter your details and your friend’s contact information in our simple 2-step referral form.
+			  </div>
+			</div>
+		  </div>
+
+		  <div class="how-divider"></div>
+
+		  <!-- Step 2 -->
+		  <div class="how-step">
+			<div class="how-icon">
+			  <!-- user icon -->
+			  <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+				<path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Z"
+					  stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+				<path d="M4 21a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+			  </svg>
+			</div>
+			<div class="how-text">
+			  <div class="how-step-title">2. Friend Subscribes</div>
+			  <div class="how-step-desc">
+				Your friend receives our offer and signs up for our high-speed internet service.
+			  </div>
+			</div>
+		  </div>
+
+		  <div class="how-divider"></div>
+
+		  <!-- Step 3 -->
+		  <div class="how-step">
+			<div class="how-icon">
+			  <!-- gift icon -->
+			  <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+				<path d="M20 12v9H4v-9" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+				<path d="M22 7H2v5h20V7Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+				<path d="M12 7v14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+				<path d="M12 7h-3.5a2.5 2.5 0 1 1 0-5C11 2 12 7 12 7Z"
+					  stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+				<path d="M12 7h3.5a2.5 2.5 0 1 0 0-5C13 2 12 7 12 7Z"
+					  stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+			  </svg>
+			</div>
+			<div class="how-text">
+			  <div class="how-step-title">3. Earn Together</div>
+			  <div class="how-step-desc">
+				After your friend subscribes, both you and your friend will receive a ৳250 discount.
+			  </div>
+			</div>
+		  </div>
+
+		  <div class="how-divider"></div>
+
+		  <!-- Step 4 -->
+		  <div class="how-step">
+			<div class="how-icon">
+			  <!-- repeat icon -->
+			  <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+				<path d="M20 7h-6a5 5 0 0 0-5 5v1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+				<path d="M4 17h6a5 5 0 0 0 5-5v-1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+				<path d="M18 5l2 2-2 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+				<path d="M6 19l-2-2 2-2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+			  </svg>
+			</div>
+			<div class="how-text">
+			  <div class="how-step-title">4. Keep Referring</div>
+			  <div class="how-step-desc">
+				No limits! Continue referring more friends to earn unlimited rewards.
+			  </div>
+			</div>
+		  </div>
+
+		</div>
+	  </div>
+	</section>
+
+	<!-- BENEFIT VIDEO SECTION -->
+<section class="benefit-video-section">
+  <div class="container">
+    <div class="benefit-grid">
+
+      <div class="benefit-media">
+        <span class="benefit-blob benefit-blob-left" aria-hidden="true"></span>
+        <span class="benefit-blob benefit-blob-right" aria-hidden="true"></span>
+
+        <div class="benefit-video-card" id="benefitCard">
+          <video
+            class="benefit-video"
+            id="benefitVideo"
+            src="assets/referral-demo.mp4"
+            preload="metadata"
+            playsinline
+          ></video>
+
+          <button class="benefit-play" id="benefitPlayBtn" type="button" aria-label="Play video">
+            ▶
+          </button>
+        </div>
+      </div>
+
+      <div class="benefit-content">
+        <h2 class="benefit-title">How You Benefit<br>from Every Referral</h2>
+        <p class="benefit-desc">
+          Watch this quick video to see how the referral process works and how you earn rewards.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+	
+	<!-- CTA SECTION -->
+	<section class="cta-section" id="cta">
+	  <div class="container">
+		<div class="cta-card">
+		  <!-- decorative shapes -->
+		  <span class="cta-shape cta-shape-1"></span>
+		  <span class="cta-shape cta-shape-2"></span>
+		  <span class="cta-shape cta-shape-3"></span>
+
+		  <h2 class="cta-title">Ready to Join Them?</h2>
+		  <p class="cta-subtitle">
+			Start referring today and watch your earnings grow. It takes less<br>
+			than 2 minutes to submit your first referral!
+		  </p>
+
+		  <button class="cta-btn" type="button" id="ctaBtn">
+			Submit Your First Referral
+		  </button>
+		</div>
+	  </div>
+	</section>
+	
+	<!-- FAQ SECTION -->
+	<section class="faq-section" id="faq">
+	  <div class="container faq-wrap">
+		<h2 class="faq-title">Frequently Asked Questions</h2>
+
+		<div class="faq-card">
+
+		  <!-- item 1 -->
+		  <div class="faq-item">
+			<button class="faq-q" type="button" aria-expanded="false">
+			  <span>What is the Refer a Friend Scheme?</span>
+			  <span class="faq-icon">▾</span>
+			</button>
+			<div class="faq-a">
+			  <p>
+				As a COL Broadband cusotmer, you can receive a Tk. 500 discount on your monthly bill for every friend you refer who successfully connects to COL Broadband. Referrals must be submitted through <a href="https://www.colbd.com/php_files/standard/user_home/user_home.php?home=yes&tm=main">referral.colbd.com</a> to qualify for this offer.
+			  </p>
+			</div>
+		  </div>
+
+		  <!-- item 2 -->
+		  <div class="faq-item">
+			<button class="faq-q" type="button" aria-expanded="false">
+			  <span>When can I refer a friend?</span>
+			  <span class="faq-icon">▾</span>
+			</button>
+			<div class="faq-a">
+			  <p>
+				You can refer a friend any day, any time, as long as you're an active COL Broadband customer.
+			  </p>
+			</div>
+		  </div>
+
+		  <!-- item 3 -->
+		  <div class="faq-item">
+			<button class="faq-q" type="button" aria-expanded="false">
+			  <span>Am I eligible?</span>
+			  <span class="faq-icon">▾</span>
+			</button>
+			<div class="faq-a">
+			  <p>
+				Yes - if you are an active COL Broadband customer, you are eligible. However, customers on Special Customers (including enterprise and customized pricing agreements), Demo or test accounts, Business partners or trade entities, SDOs or reseller accounts & Promitional or complimentary clients may not qualify at this time.
+			  </p>
+			</div>
+		  </div>
+
+		  <!-- item 4 -->
+		  <div class="faq-item">
+			<button class="faq-q" type="button" aria-expanded="false">
+			  <span>Is my friend eligible?</span>
+			  <span class="faq-icon">▾</span>
+			</button>
+			<div class="faq-a">
+			  <ul>
+				<p>Your friend must:</p>
+				<ul>
+					<li style="font-size: 12px;">Reside in an area with COL Broadband connectivity (Chittagong Metropolitan area or Cox's Bazar), <strong>and</strong></li>
+				<li style="font-size: 12px;">Not already be a COL Broadband customer.</li>
+				</ul>
+				<p>If these conditions are met, your friend is eligible.</p>
+			  </ul>
+			</div>
+		  </div>
+
+		  <!-- item 5 -->
+		  <div class="faq-item">
+			<button class="faq-q" type="button" aria-expanded="false">
+			  <span>Can I refer more than one friend?</span>
+			  <span class="faq-icon">▾</span>
+			</button>
+			<div class="faq-a">
+			  <p>
+				Absolutely! You can refer as many friends as you like.
+				You'll receive a TK. 500 discount per successful referral, with a monthly limit of Tk. 500. If you refer multiple friends, any remaining credits will be adjusted in subsequent months. <br>
+				Example: If 3 of your friends successfully get connected, you'll receive Tk. 500 off your bill for the next 3 months.
+			  </p>
+			</div>
+		  </div>
+
+		  <!-- item 6 -->
+		  <div class="faq-item">
+			<button class="faq-q" type="button" aria-expanded="false">
+			  <span>When will I receive my Tk. 500 credit?</span>
+			  <span class="faq-icon">▾</span>
+			</button>
+			<div class="faq-a">
+			  <p>
+				You'll receive your Tk. 500 credit in the next billing cycle after your friend's connection is activated. The credit will appear on your next bill - not immediately after submitting the referral form. <br>
+				Both your account and your friend's account must be active at the time of credit posting to receive the benefit.
+			  </p>
+			</div>
+		  </div>
+
+		  <!-- item 7 -->
+		  <div class="faq-item">
+			<button class="faq-q" type="button" aria-expanded="false">
+			  <span>When will my friend receive their Tk. 500 credit?</span>
+			  <span class="faq-icon">▾</span>
+			</button>
+			<div class="faq-a">
+			  <p>
+				Your friend will receive a Tk. 500 discount on their first bill after activation.
+			  </p>
+			</div>
+		  </div>
+
+		  <!-- item 8 -->
+		  <div class="faq-item">
+			<button class="faq-q" type="button" aria-expanded="false">
+			  <span>Is there any time limit for this offer?</span>
+			  <span class="faq-icon">▾</span>
+			</button>
+			<div class="faq-a">
+			  <p>
+				Yes, this is a limited-time promotional offer from Chittagong Online Limited(COL). COL reserves the right to change, suspend or withdraw the offer at any time without prior notice. <br>
+				For full details, please see the official <a href="https://www.colbd.com/php_files/standard/user_home/user_home.php?home=yes&tm=main">Terms &amp; Conditions</a> on the COL website.
+			  </p>
+			</div>
+		  </div>
+
+		</div>
+	  </div>
+	</section>
+
+  
+  <!-- FOOTER -->
+	<footer class="site-footer">
+	  <div class="footer-wrap container">
+
+		<!-- Top grid -->
+		<div class="footer-grid">
+
+		  <!-- Left: Logo + description + newsletter -->
+		  <div class="footer-col footer-brand">
+			<div class="site-logo">
+				<img src="assets/images/logo01.png" alt="COL Logo">
+			</div>
+
+			<p class="footer-desc">
+			  Bangladesh's fastest and most reliable internet service provider.
+			  Bringing high-speed connectivity to homes and businesses nationwide.
+			</p>
+		  </div>
+
+		  <!-- Products -->
+		  <div class="footer-col">
+			<div class="footer-title">Products</div>
+			<ul class="footer-links">
+			  <li><a href="#">Home Internet</a></li>
+			  <li><a href="#">Business Plans</a></li>
+			  <li><a href="#">Enterprise Solutions</a></li>
+			  <li><a href="#">IPTV Services</a></li>
+			</ul>
+		  </div>
+
+		  <!-- Company -->
+		  <div class="footer-col">
+			<div class="footer-title">Company</div>
+			<ul class="footer-links">
+			  <li><a href="#">About Us</a></li>
+			  <li><a href="#">Coverage Area</a></li>
+			  <li><a href="#">Careers</a></li>
+			  <li><a href="#">Contact</a></li>
+			</ul>
+		  </div>
+
+		  <!-- Support -->
+		  <div class="footer-col">
+			<div class="footer-title">Support</div>
+			<ul class="footer-links">
+			  <li><a href="#">Help Center</a></li>
+			  <li><a href="#">Referral Program</a></li>
+			  <li><a href="#">Customer Portal</a></li>
+			  <li><a href="#">Payment Options</a></li>
+			</ul>
+		  </div>
+		</div>
+
+		<!-- MIDDLE ROW (Newsletter left + Social right) -->
+		<div class="footer-mid">
+		  <div class="footer-mid-left">
+			<div class="footer-small-title">Subscribe to our newsletter</div>
+
+			<form class="newsletter-form" id="newsletterForm">
+			  <input
+				type="email"
+				id="newsletterEmail"
+				class="newsletter-input"
+				placeholder="Enter your email"
+				required
+			  />
+			  <button type="submit" class="newsletter-btn">Subscribe</button>
+			</form>
+		  </div>
+
+		  <div class="footer-mid-right">
+			<div class="footer-social">
+			  <a class="social-btn" href="#" aria-label="Facebook">
+				<i class="fab fa-facebook-f"></i>
+			  </a>
+
+			  <a class="social-btn" href="#" aria-label="X">
+				<i class="fab fa-twitter"></i>
+			  </a>
+
+			  <a class="social-btn" href="#" aria-label="Instagram">
+				<i class="fab fa-instagram"></i>
+			  </a>
+
+			  <a class="social-btn" href="#" aria-label="LinkedIn">
+				<i class="fab fa-linkedin-in"></i>
+			  </a>
+
+			  <a class="social-btn" href="#" aria-label="YouTube">
+				<i class="fab fa-youtube"></i>
+			  </a>
+			</div>
+		  </div>
+		</div>
+
+		<!-- BOTTOM ROW (Copyright left + Legal right) -->
+		<div class="footer-bottom">
+		  <div class="footer-copy">© 2025 SpeedNet Bangladesh. All rights reserved.</div>
+
+		  <div class="footer-legal">
+			<a href="#">Terms & Conditions</a>
+			<a href="#">Privacy Policy</a>
+			<a href="#">Customer Abuse Policy</a>
+			<a href="#">Payment Policy</a>
+		  </div>
+		</div>
+
+
+	  </div>
+	</footer>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
