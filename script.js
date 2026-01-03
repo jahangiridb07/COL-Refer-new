@@ -31,6 +31,41 @@ let otpMode = "referral"; // "referral" | "track"
 let timerInterval = null;
 let timerSeconds = 120;
 
+// ------------------ LANGUAGE ------------------
+const lang = (document.documentElement.lang || "en").toLowerCase();
+
+const TEXT = {
+  en: {
+    otp_ref_title: "Verify It’s You",
+    otp_ref_sub: "Check your phone for a 6-digit OTP and enter it here to verify it’s you.",
+
+    otp_track_title: "Track Your Referral",
+    otp_track_sub: "Check your phone for a 6-digit OTP and enter it here to verify it’s you.",
+
+    timer_prefix: "Resend code in",
+    alert_ref_ok: "Referral verified successfully! (Demo)",
+    alert_track_ok: "Tracking verified successfully! (Demo)",
+    alert_resend: "Resend code clicked (Demo)"
+  },
+  bn: {
+    otp_ref_title: "এটি আপনি কিনা যাচাই করুন",
+    otp_ref_sub: "যাচাই করার জন্য আপনার ফোনে পাঠানো ৬-সংখ্যার OTP কোডটি এখানে লিখুন",
+
+    otp_track_title: "আপনার রেফারেল ট্র্যাক করুন",
+    otp_track_sub: "যাচাই করার জন্য আপনার ফোনে পাঠানো ৬-সংখ্যার OTP কোডটি এখানে লিখুন",
+
+    timer_prefix: "কোড পুনরায় পাঠাতে বাকি",
+    alert_ref_ok: "রেফারেল যাচাই সফল হয়েছে! (ডেমো)",
+    alert_track_ok: "ট্র্যাকিং যাচাই সফল হয়েছে! (ডেমো)",
+    alert_resend: "কোড পুনরায় পাঠান ক্লিক করা হয়েছে (ডেমো)"
+  }
+};
+
+function t(key) {
+  const pack = TEXT[lang] || TEXT.en;
+  return pack[key] ?? TEXT.en[key] ?? "";
+}
+
 // ------------------ HELPERS ------------------
 function isFilled(v) {
   return String(v || "").trim().length > 0;
@@ -41,163 +76,188 @@ function lockScroll(lock) {
 }
 
 function resetOtpBoxes() {
-  otpBoxes.forEach(b => (b.value = ""));
+  otpBoxes.forEach((b) => (b.value = ""));
   verifyBtn.disabled = true;
 }
 
 function getOtpCode() {
-  return otpBoxes.map(b => b.value).join("");
+  return otpBoxes.map((b) => b.value).join("");
 }
 
 function updateVerifyState() {
   verifyBtn.disabled = getOtpCode().length !== 6;
 }
 
+// ✅ Ensure we can localize timer label without changing HTML
+function ensureTimerPrefixNode() {
+  if (!otpTimer || !otpTimeText) return;
+
+  let prefix = otpTimer.querySelector("#otpTimerPrefix");
+  if (!prefix) {
+    prefix = document.createElement("span");
+    prefix.id = "otpTimerPrefix";
+    // insert before the existing time span
+    otpTimer.insertBefore(prefix, otpTimeText);
+    // add a space between prefix and time
+    otpTimer.insertBefore(document.createTextNode(" "), otpTimeText);
+  }
+  prefix.textContent = t("timer_prefix");
+}
+
+// ------------------ NAV (Mobile) ------------------
 const menuToggle = document.getElementById("menuToggle");
 const mainNav = document.getElementById("mainNav");
 
-// Toggle mobile menu
-menuToggle.addEventListener("click", (e) => {
-  e.stopPropagation();
-  mainNav.classList.toggle("show");
-  menuToggle.setAttribute("aria-expanded", mainNav.classList.contains("show"));
-});
-
-// Dropdown logic (works for all .nav-dd)
-document.querySelectorAll(".nav-dd").forEach(dd => {
-  const btn = dd.querySelector(".dd-btn");
-  const menu = dd.querySelector(".dd-menu");
-  if (!btn || !menu) return;
-
-  btn.addEventListener("click", (e) => {
+if (menuToggle && mainNav) {
+  menuToggle.addEventListener("click", (e) => {
     e.stopPropagation();
-
-    // close other dropdowns
-    document.querySelectorAll(".dd-menu.show").forEach(m => {
-      if (m !== menu) m.classList.remove("show");
-    });
-
-    menu.classList.toggle("show");
+    mainNav.classList.toggle("show");
+    menuToggle.setAttribute("aria-expanded", mainNav.classList.contains("show"));
   });
-});
 
-// Click outside closes everything
-document.addEventListener("click", () => {
-  mainNav.classList.remove("show");
-  document.querySelectorAll(".dd-menu.show").forEach(m => m.classList.remove("show"));
-  menuToggle.setAttribute("aria-expanded", "false");
-});
+  document.querySelectorAll(".nav-dd").forEach((dd) => {
+    const btn = dd.querySelector(".dd-btn");
+    const menu = dd.querySelector(".dd-menu");
+    if (!btn || !menu) return;
 
-// Prevent inside clicks from closing menu
-mainNav.addEventListener("click", (e) => e.stopPropagation());
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      document.querySelectorAll(".dd-menu.show").forEach((m) => {
+        if (m !== menu) m.classList.remove("show");
+      });
+      menu.classList.toggle("show");
+    });
+  });
 
-// Close menu after clicking any normal link (not dropdown button)
-document.querySelectorAll("#mainNav a.nav-link").forEach(link => {
-  link.addEventListener("click", () => {
+  document.addEventListener("click", () => {
     mainNav.classList.remove("show");
+    document.querySelectorAll(".dd-menu.show").forEach((m) => m.classList.remove("show"));
     menuToggle.setAttribute("aria-expanded", "false");
   });
-});
 
+  mainNav.addEventListener("click", (e) => e.stopPropagation());
+
+  document.querySelectorAll("#mainNav a.nav-link").forEach((link) => {
+    link.addEventListener("click", () => {
+      mainNav.classList.remove("show");
+      menuToggle.setAttribute("aria-expanded", "false");
+    });
+  });
+}
 
 // ------------------ REFERRAL FLOW ------------------
 function updateContinueState() {
-  continueBtn.disabled = !(isFilled(customerId.value) && isFilled(fullName.value));
+  if (!continueBtn) return;
+  continueBtn.disabled = !(isFilled(customerId?.value) && isFilled(fullName?.value));
 }
-customerId.addEventListener("input", updateContinueState);
-fullName.addEventListener("input", updateContinueState);
 
-continueBtn.addEventListener("click", () => {
+customerId?.addEventListener("input", updateContinueState);
+fullName?.addEventListener("input", updateContinueState);
+
+continueBtn?.addEventListener("click", () => {
   otpMode = "referral";
   openOtpModal({
-    title: "Verify It’s You",
-    sub: "Check your phone for a 6-digit OTP and enter it here to verify it’s you.",
+    title: t("otp_ref_title"),
+    sub: t("otp_ref_sub"),
     showTimer: false
   });
 });
 
 // ------------------ TRACK FLOW ------------------
-trackBtn.addEventListener("click", (e) => {
+trackBtn?.addEventListener("click", (e) => {
   e.preventDefault();
   openTrackModal();
 });
 
 function updateTrackContinueState() {
-  trackContinueBtn.disabled = !(isFilled(trackCustomerId.value) && isFilled(trackName.value));
+  if (!trackContinueBtn) return;
+  trackContinueBtn.disabled = !(isFilled(trackCustomerId?.value) && isFilled(trackName?.value));
 }
-trackCustomerId.addEventListener("input", updateTrackContinueState);
-trackName.addEventListener("input", updateTrackContinueState);
 
-trackContinueBtn.addEventListener("click", () => {
+trackCustomerId?.addEventListener("input", updateTrackContinueState);
+trackName?.addEventListener("input", updateTrackContinueState);
+
+trackContinueBtn?.addEventListener("click", () => {
   otpMode = "track";
   closeTrackModal();
 
   openOtpModal({
-    title: "Track Your Referral",
-    sub: "Check your phone for a 6-digit OTP and enter it here to verify it’s you.",
+    title: t("otp_track_title"),
+    sub: t("otp_track_sub"),
     showTimer: true
   });
 
   startOtpTimer(120);
 });
 
-
-
 // ------------------ TRACK MODAL OPEN/CLOSE ------------------
 function openTrackModal() {
+  if (!trackOverlay) return;
+
   lockScroll(true);
   trackOverlay.classList.remove("hidden");
   trackOverlay.setAttribute("aria-hidden", "false");
 
-  trackCustomerId.value = "";
-  trackName.value = "";
-  trackContinueBtn.disabled = true;
+  if (trackCustomerId) trackCustomerId.value = "";
+  if (trackName) trackName.value = "";
+  if (trackContinueBtn) trackContinueBtn.disabled = true;
 
-  setTimeout(() => trackCustomerId.focus(), 0);
+  setTimeout(() => trackCustomerId?.focus(), 0);
 }
 
 function closeTrackModal() {
+  if (!trackOverlay) return;
+
   trackOverlay.classList.add("hidden");
   trackOverlay.setAttribute("aria-hidden", "true");
   lockScroll(false);
 }
 
-trackClose.addEventListener("click", closeTrackModal);
-trackOverlay.addEventListener("click", (e) => {
+trackClose?.addEventListener("click", closeTrackModal);
+
+trackOverlay?.addEventListener("click", (e) => {
   if (e.target === trackOverlay) closeTrackModal();
 });
 
 // ------------------ OTP MODAL OPEN/CLOSE ------------------
 function openOtpModal({ title, sub, showTimer }) {
+  if (!otpOverlay) return;
+
   lockScroll(true);
 
   otpTitle.textContent = title;
   otpSub.textContent = sub;
 
-  otpTimer.classList.toggle("hidden", !showTimer);
+  otpTimer?.classList.toggle("hidden", !showTimer);
+
+  // ✅ localize timer label when it is visible
+  if (showTimer) ensureTimerPrefixNode();
 
   resetOtpBoxes();
 
   otpOverlay.classList.remove("hidden");
   otpOverlay.setAttribute("aria-hidden", "false");
 
-  setTimeout(() => otpBoxes[0].focus(), 0);
+  setTimeout(() => otpBoxes?.[0]?.focus(), 0);
 }
 
 function closeOtpModal() {
+  if (!otpOverlay) return;
+
   otpOverlay.classList.add("hidden");
   otpOverlay.setAttribute("aria-hidden", "true");
   lockScroll(false);
   stopOtpTimer();
 }
 
-otpClose.addEventListener("click", closeOtpModal);
-otpOverlay.addEventListener("click", (e) => {
+otpClose?.addEventListener("click", closeOtpModal);
+
+otpOverlay?.addEventListener("click", (e) => {
   if (e.target === otpOverlay) closeOtpModal();
 });
 
 document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && !otpOverlay.classList.contains("hidden")) closeOtpModal();
+  if (e.key === "Escape" && otpOverlay && !otpOverlay.classList.contains("hidden")) closeOtpModal();
 });
 
 // ------------------ OTP BOX BEHAVIOR ------------------
@@ -239,28 +299,28 @@ otpBoxes.forEach((box, idx) => {
 });
 
 // ------------------ VERIFY ------------------
-verifyBtn.addEventListener("click", () => {
+verifyBtn?.addEventListener("click", () => {
   const code = getOtpCode();
   if (code.length !== 6) return;
 
   if (otpMode === "referral") {
-    alert("Referral verified successfully! (Demo)");
+    alert(t("alert_ref_ok"));
   } else {
-    alert("Tracking verified successfully! (Demo)");
+    alert(t("alert_track_ok"));
   }
   closeOtpModal();
 });
 
 // ------------------ RESEND / RETURN ------------------
-resendLink.addEventListener("click", (e) => {
+resendLink?.addEventListener("click", (e) => {
   e.preventDefault();
   if (otpMode === "track") {
     startOtpTimer(120);
   }
-  alert("Resend code clicked (Demo)");
+  alert(t("alert_resend"));
 });
 
-returnLink.addEventListener("click", (e) => {
+returnLink?.addEventListener("click", (e) => {
   e.preventDefault();
   closeOtpModal();
 });
@@ -269,6 +329,8 @@ returnLink.addEventListener("click", (e) => {
 function startOtpTimer(seconds) {
   stopOtpTimer();
   timerSeconds = seconds;
+
+  ensureTimerPrefixNode(); // ✅ make sure prefix exists + localized
   renderTimer();
 
   timerInterval = setInterval(() => {
@@ -297,40 +359,38 @@ function renderTimer() {
 // BENEFIT VIDEO MODAL (FIX)
 // =====================
 const video = document.getElementById("benefitVideo");
-  const btn = document.getElementById("benefitPlayBtn");
-  const card = document.getElementById("benefitCard");
+const btn = document.getElementById("benefitPlayBtn");
+const card = document.getElementById("benefitCard");
 
-  function togglePlay() {
-    if (video.paused) {
-      video.play();
-      btn.classList.add("is-hidden");
-    } else {
-      video.pause();
-      btn.classList.remove("is-hidden");
-    }
+function togglePlay() {
+  if (!video || !btn) return;
+
+  if (video.paused) {
+    video.play();
+    btn.classList.add("is-hidden");
+  } else {
+    video.pause();
+    btn.classList.remove("is-hidden");
   }
+}
 
-  btn.addEventListener("click", togglePlay);
-  card.addEventListener("click", (e) => {
-    // avoid double click conflict when clicking button
-    if (e.target === btn) return;
-    togglePlay();
-  });
+btn?.addEventListener("click", togglePlay);
 
-  video.addEventListener("ended", () => btn.classList.remove("is-hidden"));
-  video.addEventListener("pause", () => btn.classList.remove("is-hidden"));
-  video.addEventListener("play", () => btn.classList.add("is-hidden"));
+card?.addEventListener("click", (e) => {
+  if (e.target === btn) return;
+  togglePlay();
+});
 
+video?.addEventListener("ended", () => btn?.classList.remove("is-hidden"));
+video?.addEventListener("pause", () => btn?.classList.remove("is-hidden"));
+video?.addEventListener("play", () => btn?.classList.add("is-hidden"));
 
 // CTA button scroll to referral form
 const ctaBtn = document.getElementById("ctaBtn");
-if (ctaBtn) {
-  ctaBtn.addEventListener("click", () => {
-    // scroll to form (change target if needed)
-    const form = document.getElementById("refForm");
-    if (form) form.scrollIntoView({ behavior: "smooth", block: "center" });
-  });
-}
+ctaBtn?.addEventListener("click", () => {
+  const form = document.getElementById("refForm");
+  if (form) form.scrollIntoView({ behavior: "smooth", block: "center" });
+});
 
 // =====================
 // FAQ ACCORDION
@@ -339,9 +399,9 @@ const faqItems = document.querySelectorAll(".faq-item");
 
 faqItems.forEach((item) => {
   const btn = item.querySelector(".faq-q");
+  if (!btn) return;
 
   btn.addEventListener("click", () => {
-    // close others
     faqItems.forEach((other) => {
       if (other !== item) {
         other.classList.remove("open");
@@ -350,22 +410,16 @@ faqItems.forEach((item) => {
       }
     });
 
-    // toggle current
     const isOpen = item.classList.toggle("open");
     btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
   });
 });
 
-
-
 // ------------------ FOOTER NEWSLETTER (demo) ------------------
 const newsletterForm = document.getElementById("newsletterForm");
-if (newsletterForm) {
-  newsletterForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const email = document.getElementById("newsletterEmail").value.trim();
-    alert("Subscribed: " + email + " (Demo)");
-    newsletterForm.reset();
-  });
-}
-
+newsletterForm?.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const email = document.getElementById("newsletterEmail")?.value?.trim() || "";
+  alert("Subscribed: " + email + " (Demo)");
+  newsletterForm.reset();
+});
