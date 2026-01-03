@@ -141,6 +141,8 @@ trackContinueBtn.addEventListener("click", () => {
   startOtpTimer(120);
 });
 
+
+
 // ------------------ TRACK MODAL OPEN/CLOSE ------------------
 function openTrackModal() {
   lockScroll(true);
@@ -366,3 +368,4 @@ if (newsletterForm) {
     newsletterForm.reset();
   });
 }
+

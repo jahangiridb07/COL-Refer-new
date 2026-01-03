@@ -4,13 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>COL-Referral</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
-  <link rel="stylesheet" href="style.css" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">  
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+  	<link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
@@ -110,7 +108,7 @@
           <div class="card-top">
             <div class="card-top-left">
               <div class="card-top-title">রেফার শুরু করুন</div>
-              <div class="card-top-sub">৫০০৳ ডিসকাউন্ট পেতে তথ্যগুলো পূরণ করুন</div>
+              <div class="card-top-sub">২৫০৳ ডিসকাউন্ট পেতে তথ্যগুলো পূরণ করুন</div>
             </div>
 
             <!-- TRACK REFERRAL BUTTON -->
@@ -134,11 +132,11 @@
             </div>
 
             <form id="refForm" class="form">
-              <label class="label" for="customerId">গ্রাহক মোবাইল নাম্বার</label>
-              <input id="customerId" class="input" type="text" placeholder="0181XXXXXXXX" autocomplete="off" />
+              <label class="label" for="customerId">সিওএল আইডি</label>
+              <input id="customerId" class="input" type="text" placeholder="আপনার সিওএল আইডি প্রদান করুন" autocomplete="off" />
 
               <label class="label" for="fullName">নাম</label>
-              <input id="fullName" class="input" type="text" placeholder="আপনার পূর্ণ নাম লিখুন" autocomplete="off" />
+              <input id="fullName" class="input" type="text" placeholder="আপনার পূর্ণ নাম প্রদান করুন" autocomplete="off" />
 
               <button id="continueBtn" class="btn" type="button" disabled>জমা দিন</button>
             </form>
@@ -154,19 +152,19 @@
     <div class="modal track-modal" role="dialog" aria-modal="true" aria-labelledby="trackTitle">
       <button class="modal-close" id="trackClose" aria-label="Close">×</button>
 
-      <h2 id="trackTitle" class="modal-title track-title">Track Your Referral</h2>
+      <h2 id="trackTitle" class="modal-title track-title">আপনার রেফারেল ট্র্যাক করুন</h2>
       <p class="modal-sub track-sub">
-        Enter your customer ID and track your referral
+        আপনার কাস্টমার আইডি লিখুন এবং রেফারেল স্ট্যাটাস দেখুন
       </p>
 
       <form id="trackForm" class="form track-form">
-        <label class="label" for="trackCustomerId">Customer ID</label>
-        <input id="trackCustomerId" class="input" type="text" placeholder="Enter your customer ID" autocomplete="off"/>
+        <label class="label" for="trackCustomerId">কাস্টমার আইডি</label>
+        <input id="trackCustomerId" class="input" type="text" placeholder="আপনার সিওএল আইডি প্রদান করুন" autocomplete="off"/>
 
-        <label class="label" for="trackName">Name</label>
-        <input id="trackName" class="input" type="text" placeholder="Enter your name" autocomplete="off"/>
+        <label class="label" for="trackName">নাম</label>
+        <input id="trackName" class="input" type="text" placeholder="আপনার পূর্ণ নাম প্রদান করুন" autocomplete="off"/>
 
-        <button id="trackContinueBtn" class="btn btn-wide" type="button" disabled>Continue</button>
+        <button id="trackContinueBtn" class="btn btn-wide" type="button" disabled>জমা দিন</button>
       </form>
     </div>
   </div>
@@ -185,10 +183,9 @@
         </svg>
       </div>
 
-      <h2 id="otpTitle" class="modal-title">Verify It’s You</h2>
+      <h2 id="otpTitle" class="modal-title">এটি আপনি কিনা যাচাই করুন</h2>
       <p id="otpSub" class="modal-sub">
-        Check your phone for a 6-digit OTP and
-        enter it here to verify it’s you.
+        যাচাই করার জন্য আপনার ফোনে পাঠানো ৬-সংখ্যার OTP কোডটি এখানে লিখুন
       </p>
 
       <div class="otp" id="otpBoxes">
@@ -203,15 +200,15 @@
       <!-- TIMER (Only show for Track flow) -->
       <div id="otpTimer" class="otp-timer hidden">Resend code in <span id="otpTimeText">2:00</span></div>
 
-      <button id="verifyBtn" class="btn btn-wide" type="button" disabled>Verify</button>
+      <button id="verifyBtn" class="btn btn-wide" type="button" disabled>যাচাই করুন</button>
 
       <div class="modal-links">
         <div class="resend">
-          Don’t have a code?
-          <a href="#" id="resendLink">Resend code</a>
+          কোড পাননি?
+          <a href="#" id="resendLink">কোড পুনরায় পাঠান</a>
         </div>
 
-        <a href="#" class="return" id="returnLink">‹ Return to sign in</a>
+        <a href="#" class="return" id="returnLink">‹ সাইন ইন পৃষ্ঠায় ফিরে যান</a>
       </div>
     </div>
   </div>
