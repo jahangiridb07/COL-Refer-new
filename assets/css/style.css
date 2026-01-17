@@ -64,7 +64,7 @@ html.lang-bn {
   height: 28px;
   border: 2px solid #2563eb;
   color: #2563eb;
-  font-weight: 800;
+  font-weight: 650;
   border-radius: 4px;
   letter-spacing: .8px;
   font-size: 14px;
@@ -488,7 +488,7 @@ html.lang-bn {
 
 .money {
   color: #1d4ed8;
-  font-weight: 800;
+  font-weight: 650;
 }
 
 .taka {
@@ -556,7 +556,7 @@ html.lang-bn {
 }
 
 .card-top-title {
-  font-weight: 800;
+  font-weight: 650;
   font-size: 16px;
   margin-bottom: 2px;
 }
@@ -641,7 +641,7 @@ html.lang-bn {
 
 .label {
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 600;
   color: #374151;
   margin-top: 2px;
 }
@@ -667,7 +667,7 @@ html.lang-bn {
   border-radius: 10px;
   border: none;
   cursor: pointer;
-  font-weight: 800;
+  font-weight: 650;
   font-size: 13px;
   background: #d1d5db;
   color: #6b7280;
@@ -781,7 +781,7 @@ html.lang-bn {
   border: 1px solid #e5e7eb;
   text-align: center;
   font-size: 18px;
-  font-weight: 800;
+  font-weight: 650;
   outline: none;
 }
 
@@ -802,7 +802,7 @@ html.lang-bn {
 
 .resend a {
   color: #2563eb;
-  font-weight: 700;
+  font-weight: 600;
   text-decoration: none;
 }
 
@@ -902,7 +902,7 @@ html.lang-bn {
 
 .how-step-title {
   font-size: 13px;
-  font-weight: 800;
+  font-weight: 600;
   color: #111827;
   margin-bottom: 6px;
 }
@@ -1032,7 +1032,7 @@ html.lang-bn {
   margin: 0 0 12px;
   letter-spacing: -.4px;
   color: #111827;
-  font-weight: 800;
+  font-weight: 650;
 }
 
 .benefit-desc {
@@ -1187,7 +1187,7 @@ html.lang-bn {
 .cta-title {
   margin: 0 0 10px;
   font-size: 30px;
-  font-weight: 800;
+  font-weight: 650;
   color: #fff;
   letter-spacing: -0.4px;
 }
@@ -1207,7 +1207,7 @@ html.lang-bn {
   border-radius: 12px;
   background: #ffffff;
   color: #1f2a44;
-  font-weight: 800;
+  font-weight: 650;
   font-size: 12px;
   box-shadow: 0 12px 30px rgba(0, 0, 0, .18);
   transition: transform .15s ease, box-shadow .15s ease;
@@ -1279,7 +1279,7 @@ html.lang-bn {
   text-align: center;
   margin: 0 0 22px;
   font-size: 28px;
-  font-weight: 800;
+  font-weight: 650;
   color: #111827;
   letter-spacing: -0.3px;
 }
@@ -1308,13 +1308,11 @@ html.lang-bn {
   border: none;
   background: #fff;
   cursor: pointer;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-
-  font-weight: 700;
+  font-weight: 600;
   font-size: 13px;
   color: #111827;
 }
@@ -1458,7 +1456,7 @@ html.lang-bn {
   cursor: pointer;
   background: #0b5ed7;
   color: #fff;
-  font-weight: 800;
+  font-weight: 650;
   font-size: 12px;
   white-space: nowrap;
 }
@@ -1469,7 +1467,7 @@ html.lang-bn {
 
 .footer-title {
   font-size: 13px;
-  font-weight: 800;
+  font-weight: 650;
   margin-bottom: 12px;
   color: #fff;
 }
@@ -1857,3 +1855,513 @@ html.lang-bn {
     height: 52px;
   }
 }
+
+ /* Dashboard CSS */
+
+/* Topbar */
+.topbar{ background:#fff; border-bottom:1px solid #eef2ff; position:sticky; top:0; z-index:10; }
+.topbar__inner{
+  max-width:1200px; margin:0 auto; padding:10px 18px;
+  display:flex; align-items:center; gap:14px;
+}
+.brand__logo{
+  width:58px; height:32px; border:2px solid #8aa2d6; border-radius:4px;
+  display:flex; align-items:center; justify-content:center;
+  font-weight:600; color:#1f3b79;
+}
+.brand__logo span{ color:#dc2626; }
+
+.nav{ display:flex; align-items:center; gap:18px; flex:1 1 auto; }
+.nav__link{
+  color:#334155; text-decoration:none; font-weight:600; font-size:13px;
+  padding:8px 8px; border-radius:10px;
+}
+.nav__link:hover{ background:#f3f6ff; }
+.nav__link--btn{ border:0; background:transparent; cursor:pointer; }
+.nav__link i{ font-size:11px; margin-left:6px; color:#94a3b8; }
+
+.topbar__right{ display:flex; gap:10px; align-items:center; }
+.lang{
+  border:0; background:transparent; font-weight:450; font-size:13px;
+  color:#111827; cursor:pointer; padding:8px 10px; border-radius:10px;
+}
+.lang:hover{ background:#f3f6ff; }
+.lang i{ font-size:11px; margin-left:6px; color:#64748b; }
+.logout{
+  border:0; background:var(--blue); color:#fff; font-weight:800; font-size:12px;
+  padding:8px 14px; border-radius:10px; cursor:pointer;
+  box-shadow:0 10px 25px rgba(37,99,235,.22);
+}
+
+.hamburger{ display:none; border:0; background:transparent; font-size:18px; color:#334155; cursor:pointer; }
+.mobileNav{ display:none; max-width:1200px; margin:0 auto; padding:10px 18px 14px; border-top:1px solid #eef2ff; }
+.mobileNav a{
+  display:block; padding:10px 10px; border-radius:10px;
+  text-decoration:none; color:#334155; font-weight:450;
+}
+.mobileNav a:hover{ background:#f3f6ff; }
+
+/* Page */
+.page{ max-width:1200px; margin:18px auto 34px; padding:0 18px; }
+
+.board{
+  background:rgba(255,255,255,.86);
+  border:1px solid #edf2ff;
+  border-radius:24px;
+  box-shadow:var(--shadow);
+  padding:18px;
+}
+
+.hero{ padding:20px 0 25px; }
+.hero__small{ color:var(--muted); font-weight:600; font-size:12px; }
+.hero__name{ font-weight:600; font-size:22px; margin-top:4px; }
+
+.grid{
+  display:grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap:16px;
+  align-items:stretch;
+}
+.rightCol{ display:grid; gap:16px; }
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  overflow:hidden;
+}
+.card__head{ padding:14px 14px 10px; border-bottom:1px solid #eff4ff; }
+.card__body{ padding:14px; }
+
+.headRow{ display:flex; gap:10px; align-items:flex-start; }
+.headText{ flex:1; }
+
+.icon{
+  width:34px; height:34px; border-radius:10px;
+  display:inline-flex; align-items:center; justify-content:center;
+  background:#eef2ff; color:var(--blue);
+  flex:0 0 auto;
+}
+.title{ font-weight:600; font-size:13px; }
+.sub{
+  margin-top:4px;
+  font-size:12px;
+  color:var(--muted);
+  font-weight:600;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  flex-wrap:wrap;
+}
+
+.trackingValue{ font-weight:600; color:#111827; }
+
+.copyIcon{
+  border:0; background:transparent; cursor:pointer;
+  width:26px; height:26px; border-radius:8px;
+  display:inline-flex; align-items:center; justify-content:center;
+  color:#64748b;
+}
+.copyIcon:hover{ background:#f3f6ff; }
+
+.copied{
+  color:var(--blue);
+  font-weight:600;
+  font-size:12px;
+  opacity:0;
+  transform:translateY(-2px);
+  transition:.18s ease;
+}
+.copied.show{ opacity:1; transform:translateY(0); }
+
+/* ============================================================
+   ✅ TIMELINE (FIXED): ONE CONTINUOUS LINE + DONE/ACTIVE/PENDING
+   ============================================================ */
+
+.timeline{
+  position: relative;
+  padding: 16px 14px 18px;
+  --railW: 44px;     /* rail area width */
+  --dot: 30px;       /* dot size */
+  --line: 2px;       /* line thickness */
+}
+
+/* ✅ Rail area (stabilizes alignment) */
+.timeline::before{
+  content:"";
+  position:absolute;
+  top: 28px;
+  bottom: 28px;
+  left: 14px;              /* same as timeline left padding */
+  width: var(--railW);     /* rail width */
+  pointer-events:none;
+  z-index:1;
+}
+
+/* ✅ Real continuous line centered behind dots */
+.timeline::after{
+  content:"";
+  position:absolute;
+  top: 28px;
+  bottom: 28px;
+  left: calc(14px + (var(--railW) / 2));
+  width: var(--line);
+  transform: translateX(-50%);
+  background:#e6eefc;
+  pointer-events:none;
+  z-index:1;
+}
+
+.step{
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+  padding: 12px 0;
+}
+
+.step__rail{
+  width: var(--railW);
+  position: relative;
+  display:flex;
+  justify-content:center;
+  flex:0 0 auto;
+}
+
+.step__dot{
+  width: var(--dot);
+  height: var(--dot);
+  border-radius:999px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-weight:600;
+  font-size:12px;
+  line-height:1;
+
+  border:1px solid #e2e8f0;
+  background:#f1f5f9;
+  color:#94a3b8;
+
+  position: relative;
+  z-index:2; /* dot above line */
+}
+
+/* ✅ DONE (step 1) */
+.step.done .step__dot{
+  background:var(--blue);
+  border-color:var(--blue);
+  color:#fff;
+}
+.step.done .step__dot i{
+  font-size:12px;
+  line-height:1;
+}
+
+/* ✅ ACTIVE STEP (highlighted blue with number) */
+.step.active .step__dot{
+  background:var(--blue);
+  border:1.5px solid var(--blue);
+  color:#ffffff;
+  font-weight:600;
+}
+
+/* ✅ PENDING (step 3 etc.) */
+.step:not(.done):not(.active) .step__dot{
+  background:#f1f5f9;
+  border:1px solid #e2e8f0;
+  color:#94a3b8;
+}
+
+.step__h{ font-weight:600; font-size:13px; }
+.step__p{
+  margin-top:4px;
+  font-size:12px;
+  color:var(--muted);
+  font-weight:600;
+  line-height:1.35;
+}
+
+/* ============================================================
+   ✅ PACKAGE
+   ============================================================ */
+
+.pkgHero{
+  display:flex;
+  align-items:flex-end;
+  gap:10px;
+  padding:2px 0 8px;
+}
+.pkgHero__num{
+  font-size:45px;
+  font-weight:600;
+  line-height:1;
+  letter-spacing:-1px;
+}
+.pkgHero__meta{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  padding-bottom:8px;
+  margin-left:2px;
+}
+.pkgHero__unit{
+  font-weight:600;
+  font-size:12px;
+}
+.pkgHero__price{
+  font-weight:450;
+  font-size:12px;
+  color:#0f172a;
+}
+
+/* 3 columns with divider */
+.pkgCols{
+  display:grid;
+  grid-template-columns: 1.3fr .8fr 1fr;
+  gap:0;
+  padding:6px 0 4px;
+  align-items:start;
+}
+.pkgCol{
+  padding:0 16px;
+  position:relative;
+}
+.pkgCol:not(:last-child)::after{
+  content:"";
+  position:absolute;
+  top:2px;
+  right:0;
+  width:1px;
+  height:100%;
+  background:#e5e7eb;
+}
+
+.kv__k{
+  font-size:11px;
+  color:#64748b;
+  font-weight:450;
+}
+.kv__v{
+  margin-top:4px;
+  font-weight:550;
+  font-size:13px;
+  display:flex;
+  align-items:baseline;
+  gap:4px;
+}
+.taka-bn {font-size: 13px;}
+
+/* Duration inline fix */
+.kv__v--inline{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:nowrap;
+  white-space:nowrap;
+}
+.freeMini{
+  font-size:11px;
+  font-weight:900;
+  padding:4px 10px;
+  border-radius:999px;
+  background:#f5f3ff;
+  border:1px solid #ddd6fe;
+  color:#6d28d9;
+  line-height:1;
+}
+
+/* Pills */
+.badges{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:14px;
+}
+.pill{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:7px 12px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:600;
+  border:1px solid #e5e7eb;
+  background:#fff;
+  line-height:1;
+}
+.pill--green{ background:#ecfdf5; border-color:#a7f3d0; color:#065f46; }
+.pill--orange{ background:#fff7ed; border-color:#fed7aa; color:#9a3412; }
+.pill--red{ background:#fff1f2; border-color:#fecaca; color:#be123c; }
+.pill--gray{ background:#ffffff; border-color:#e5e7eb; color:#0f172a; }
+.pill--violet{ background:#f5f3ff; border-color:#ddd6fe; color:#6d28d9; }
+
+/* ===== Brand group like screenshot (corki + bongo + red gear) ===== */
+.brandGroup{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:6px 12px;
+  border-radius:999px;
+  background:#ffffff;
+  border:1px solid #e5e7eb;
+}
+.brandGroup__logo{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+.brandGroup__logo img{
+  height:14px;
+  width:auto;
+  display:block;
+}
+.brandGroup__gear{
+  width:22px;
+  height:22px;
+  border-radius:999px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:#ffe4e6;
+  border:1px solid #fecaca;
+  color:#e11d48;
+  font-size:12px;
+}
+
+/* Profile */
+.profile__name{ font-weight:600; font-size:13px; margin-bottom:10px; }
+.pRow{
+  display:flex; gap:10px;
+  color:var(--muted);
+  font-weight:450; font-size:12px;
+  padding:6px 0;
+}
+.pRow i{ width:16px; color:#94a3b8; margin-top:2px; }
+.profile__actions{ display:flex; justify-content:flex-end; padding-top:6px; }
+.change{ font-weight:600; font-size:12px; text-decoration:none; color:var(--blue); }
+.change:hover{ text-decoration:underline; }
+
+/* Responsive */
+@media (max-width: 980px){
+  .grid{ grid-template-columns:1fr; }
+  .pkgCols{ grid-template-columns:1fr; }
+  .pkgCol:not(:last-child)::after{ display:none; }
+}
+
+@media (max-width: 860px){
+  .nav{ display:none; }
+  .topbar__right{ display:none; }
+  .hamburger{ display:block; margin-left:auto; }
+  .mobileNav.show{ display:block; }
+}
+/* ✅ Red warning message like screenshot */
+.reviewNotice{
+  margin-top:6px;
+  max-width: 420px;        /* ✅ stop full width */
+  color:#e11d48;
+  font-size:12px;
+  font-weight:600;
+  line-height:1.35;
+}
+
+/* ✅ button spacing */
+.outlineBtn{
+  margin-top:10px;
+  border:1px solid #c7d2fe;
+  background:#fff;
+  color:#2563eb;
+  font-weight:700;
+  font-size:12px;
+  padding:7px 12px;
+  border-radius:10px;
+  cursor:pointer;
+}
+.outlineBtn:hover{
+  background:#f3f6ff;
+}
+/* Review message (black + red text) */
+.reviewNotice{
+  margin-top:6px;
+  max-width:420px;
+  font-size:12px;
+  font-weight:450;
+  line-height:1.35;
+  color:#0f172a; /* black text */
+}
+
+/* Red highlighted part */
+.reviewNotice--danger{
+  color:#e11d48; /* red */
+  font-weight:450;
+}
+
+/* Button (already matches design) */
+.outlineBtn{
+  margin-top:10px;
+  border:1px solid #c7d2fe;
+  background:#fff;
+  color:#2563eb;
+  font-weight:700;
+  font-size:12px;
+  padding:7px 12px;
+  border-radius:10px;
+  cursor:pointer;
+}
+.outlineBtn:hover{
+  background:#f3f6ff;
+}
+
+
+.warnDot{
+      width:16px;height:16px;
+      border-radius:999px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      background:#fee2e2;
+      border:1px solid #fecaca;
+      color:#dc2626;
+      font-size:10px;
+    }
+
+.outlineBtn{
+      border:1px solid #c7d2fe;
+      background:#fff;
+      color:#2563eb;
+      font-weight:550;
+      font-size:12px;
+      padding:7px 12px;
+      border-radius:10px;
+      cursor:pointer;
+    }
+.outlineBtn:hover{
+      background:#f3f6ff;
+    }
+.payBox{
+      margin-top:12px;
+      border:1px solid #e5e7eb;
+      border-radius:12px;
+      padding:10px 12px;
+      background:#fff;
+      max-width: 340px;
+    }
+.payBox__title{
+      font-weight:700;
+      font-size:12px;
+      margin-bottom:8px;
+      color:#0f172a;
+    }
+.payRow{
+      display:flex;
+      gap:6px;
+      font-size:11px;
+      line-height:1.45;
+      margin:3px 0;
+      color:#334155;
+      font-weight:600;
+    }
+.payKey{ min-width:132px; color:#64748b; font-weight:700; }
+.payVal{ color:#111827; font-weight:700; }
+.taka-bn {font-size: 30px;}

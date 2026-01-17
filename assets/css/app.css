@@ -231,7 +231,7 @@ hr {
 
 .nc-h1 {
   font-size: 22px;
-  font-weight: 650;
+  font-weight: 600;
   white-space: nowrap
 }
 
@@ -252,7 +252,7 @@ hr {
   border: 0;
   padding: 10px 16px;
   border-radius: 14px;
-  font-weight: 650;
+  font-weight: 600;
   background: #e2e8f0;
   color: var(--muted);
   cursor: not-allowed
@@ -306,7 +306,7 @@ hr {
 /* Step-1 headings */
 .nc-chooseTitle {
   font-size: 12px;
-  font-weight: 650;
+  font-weight: 600;
   color: var(--muted);
   margin-top: 8px;
   margin-bottom: 8px
@@ -325,7 +325,7 @@ hr {
   align-items: center;
   gap: 8px;
   font-size: 12px;
-  font-weight: 650;
+  font-weight: 600;
   padding: 6px 10px;
   border-radius: 999px;
   border: 1px solid #e5e7eb;
@@ -353,7 +353,7 @@ hr {
 
 .nc-pill {
   font-size: 11px;
-  font-weight: 650;
+  font-weight: 600;
   padding: 6px 10px;
   border-radius: 999px;
   border: 1px solid #e5e7eb;
@@ -476,7 +476,7 @@ hr {
 
 .pkg-num {
   font-size: 28px;
-  font-weight: 650;
+  font-weight: 600;
   line-height: 1
 }
 
@@ -494,7 +494,7 @@ hr {
 
 .pkg-price {
   font-size: 12px;
-  font-weight: 650
+  font-weight: 600
 }
 
 .pkg-view {
@@ -609,7 +609,7 @@ hr {
 
 .vp-title {
   font-size: 16px;
-  font-weight: 650;
+  font-weight: 600;
   margin-bottom: 10px
 }
 
@@ -625,7 +625,7 @@ hr {
 
 .vp-speedNum {
   font-size: 40px;
-  font-weight: 650;
+  font-weight: 600;
   line-height: 1
 }
 
@@ -648,7 +648,7 @@ hr {
 
 .vp-rateValue {
   font-size: 12px;
-  font-weight: 650
+  font-weight: 600
 }
 
 .vp-body {
@@ -676,7 +676,7 @@ hr {
 
 .vp-cardTitle {
   font-size: 13px;
-  font-weight: 650
+  font-weight: 600
 }
 
 .vp-cardSub {
@@ -688,7 +688,7 @@ hr {
 
 .vp-cardPrice {
   font-size: 14px;
-  font-weight: 650
+  font-weight: 600
 }
 
 .vp-acc {
@@ -708,7 +708,7 @@ hr {
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-  font-weight: 650;
+  font-weight: 600;
   font-size: 12px
 }
 
@@ -751,7 +751,7 @@ hr {
 
 .vp-itemTitle {
   font-size: 13px;
-  font-weight: 650
+  font-weight: 600
 }
 
 .vp-itemMeta {
@@ -771,13 +771,13 @@ hr {
 
 .vp-free {
   color: #6d28d9;
-  font-weight: 650
+  font-weight: 600
 }
 
 .vp-per {
   margin-top: 8px;
   font-size: 12px;
-  font-weight: 650;
+  font-weight: 600;
   display: flex;
   gap: 8px;
   align-items: center
@@ -785,7 +785,7 @@ hr {
 
 .vp-oldPrice {
   font-size: 12px;
-  font-weight: 650;
+  font-weight: 600;
   color: #94a3b8;
   text-decoration: line-through
 }
@@ -803,7 +803,7 @@ hr {
   border: 0;
   background: #cbd5e1;
   color: var(--muted);
-  font-weight: 650;
+  font-weight: 600;
   cursor: not-allowed
 }
 
@@ -835,7 +835,7 @@ hr {
   border: 0;
   background: transparent;
   color: #2563eb;
-  font-weight: 650;
+  font-weight: 600;
   cursor: pointer
 }
 
@@ -865,13 +865,13 @@ hr {
 
 .sel-speedNum {
   font-size: 34px;
-  font-weight: 650;
+  font-weight: 600;
   line-height: 1
 }
 
 .sel-speedUnit {
   font-size: 12px;
-  font-weight: 650
+  font-weight: 600
 }
 
 .sel-per {
@@ -897,7 +897,7 @@ hr {
 
 .sel-colValue {
   font-size: 12px;
-  font-weight: 650;
+  font-weight: 600;
   margin-top: 2px;
   white-space: nowrap
 }
@@ -1018,7 +1018,7 @@ hr {
   border: 0;
   background: transparent;
   color: #2563eb;
-  font-weight: 650;
+  font-weight: 600;
   cursor: pointer;
   font-size: 12px;
   display: flex;
@@ -1077,7 +1077,7 @@ hr {
 
 .tyr-title {
   font-size: 18px;
-  font-weight: 650
+  font-weight: 600
 }
 
 .tyr-close {
@@ -1136,7 +1136,7 @@ hr {
   border-radius: 10px;
   background: #cbd5e1;
   color: var(--muted);
-  font-weight: 650;
+  font-weight: 600;
   cursor: not-allowed
 }
 
@@ -1200,7 +1200,7 @@ hr {
 .otp-title {
   margin: 6px 0;
   font-size: 22px;
-  font-weight: 650
+  font-weight: 600
 }
 
 .otp-sub {
@@ -1225,7 +1225,7 @@ hr {
   border: 1px solid #e5e7eb;
   text-align: center;
   font-size: 16px;
-  font-weight: 650;
+  font-weight: 600;
   outline: none
 }
 
@@ -1241,7 +1241,7 @@ hr {
   border: 0;
   background: #cbd5e1;
   color: var(--muted);
-  font-weight: 650;
+  font-weight: 600;
   cursor: not-allowed
 }
 
@@ -1270,7 +1270,7 @@ hr {
 
 .otp-link {
   color: #2563eb;
-  font-weight: 650;
+  font-weight: 600;
   text-decoration: none
 }
 
@@ -1283,7 +1283,7 @@ hr {
   gap: 8px;
   align-items: center;
   font-size: 12px;
-  font-weight: 650;
+  font-weight: 600;
   text-decoration: none
 }
 
