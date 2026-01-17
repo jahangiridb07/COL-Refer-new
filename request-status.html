@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>COL-Referral</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/dashboard.css" />
+  <link rel="stylesheet" href="assets/css/app.css" />
+   
+</head>
+<body>
+
+  <!-- NAVBAR -->
+<header class="nav">
+  <div class="container nav-inner">
+    <div class="site-logo">
+      <img src="assets/images/logo01.png" alt="COL Logo">
+    </div>
+
+    <!-- ✅ Mobile menu toggle -->
+    <button id="menuToggle" class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+      ☰
+    </button>
+
+    <!-- ✅ Give nav an id so JS can toggle it -->
+    <nav class="nav-links" id="mainNav">
+      <a href="#" class="nav-link">Home</a>
+	  <a href="new-connection.html" class="nav-link">Package</a>
+
+      <div class="nav-dd">
+        <button class="nav-link dd-btn active" type="button">
+          Coverage <span class="dd-arrow">▾</span>
+        </button>
+        <div class="dd-menu">
+          <a href="request-status.html">Request Status</a>
+          <a href="payment-status.html">Payment Status</a>
+		      <a href="payment-completed.html">Payment Completed</a>
+          <a href="application-rejected.html">Application Rejected</a>
+        </div>
+      </div>
+
+      <a href="referral.html" class="nav-link">Referral</a>
+      <a href="#" class="nav-link">Support</a>
+
+      <!-- ✅ Language dropdown inside nav for mobile (optional but useful) -->
+      <div class="nav-dd lang-dd mobile-lang">
+        <button id="langToggleMobile" class="nav-link dd-btn" type="button" aria-expanded="false">
+          EN <span class="dd-arrow">▾</span>
+        </button>
+        <div id="langMenuMobile" class="dd-menu dd-menu-right">
+          <a href="#">EN</a>
+          <a href="#">বাং</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="nav-dd lang-dd">
+		<button class="lang dd-btn" type="button">
+			EN <span class="dd-arrow">▾</span>
+		</button>
+		<div class="dd-menu dd-menu-right">
+			<a href="index.html">EN</a>
+			<a href="index-bn.html">বাং</a>
+		</div>
+	</div>
+</header>
+
+  <!-- PAGE -->
+  <main class="page">
+    <section class="board">
+      <div class="hero">
+        <div class="hero__small" id="greetingText">Good Evening</div>
+        <div class="hero__name" id="customerName">Golam Nabi Chowdhury</div>
+      </div>
+
+      <div class="grid">
+        <!-- LEFT: TRACKING -->
+        <article class="card">
+          <div class="card__head">
+            <div class="headRow">
+              <span class="icon icon--soft"><i class="fa-regular fa-eye"></i></span>
+              <div class="headText">
+                <div class="title">Track Your Internet Connection Request</div>
+                <div class="sub">
+                  Tracking Number:
+                  <span class="trackingValue" id="trackingNumber">COLSUB-0000001625</span>
+
+                  <span class="copied" id="copiedTag">Copied!</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ✅ FIXED TIMELINE (one continuous line via CSS ::before) -->
+          <div class="timeline" id="timeline"></div>
+        </article>
+
+        <!-- RIGHT COLUMN -->
+        <div class="rightCol">
+          <!-- Requested Package -->
+          <article class="card">
+            <div class="card__head">
+              <div class="headRow">
+                <span class="icon icon--soft"><i class="fa-solid fa-cube"></i></span>
+                <div class="headText">
+                  <div class="title">Requested Package</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card__body">
+              <!-- ✅ 70 big + Mbps & 792/Month close to it -->
+              <div class="pkgHero">
+                <div class="pkgHero__num" id="pkgSpeed">70</div>
+                <div class="pkgHero__meta">
+                  <div class="pkgHero__unit">Mbps</div>
+                  <div class="pkgHero__price"><span id="pkgPrice">792</span>/Month</div>
+                </div>
+              </div>
+
+              <!-- ✅ 3 columns EXACT spacing -->
+              <div class="pkgCols">
+                <div class="pkgCol">
+                  <div class="kv__k">Duration</div>
+
+                  <!-- ✅ same line -->
+                  <div class="kv__v kv__v--inline">
+                    <span id="pkgDuration">10 Month</span>
+                    <span class="freeMini" id="pkgFree">+2 Month Free</span>
+                  </div>
+                </div>
+
+
+                <div class="pkgCol">
+                  <div class="kv__k">Total</div>
+                  <div class="kv__v">
+                    <span id="pkgTotal">9,500</span>
+                    <span class="taka-bn">৳</span>
+                  </div>
+                </div>
+
+                <div class="pkgCol">
+                  <div class="kv__k">Type of Customer</div>
+                  <div class="kv__v" id="pkgType">Fiber</div>
+                </div>
+              </div>
+
+              <!-- ✅ pills row (with logo support) -->
+              <div class="badges">
+                <div class="nc-rowhead">
+                  <span class="nc-chip nc-chip--purple">Smart Home Regular</span>
+
+                  <div class="nc-partners">
+                    <span class="brand corki"><img src="assets/images/Chorki_Logo.png" width="50px" alt=""></span>
+                    <span class="sep">|</span>
+
+                    <span class="brand bongo">
+                      <img src="assets/images/bongo.png" width="50px" alt="">
+                      <span class="badge-spark" aria-label="free"><img src="assets/images/spark.png" width="20px" alt=""></span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </article>
+
+          <!-- Profile -->
+          <article class="card">
+            <div class="card__head">
+              <div class="headRow">
+                <span class="icon icon--soft"><i class="fa-regular fa-user"></i></span>
+                <div class="headText">
+                  <div class="title">Profile</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card__body profile">
+              <div class="profile__name" id="profileName">Golam Nabi Chowdhury</div>
+
+              <div class="pRow">
+                <i class="fa-regular fa-envelope"></i>
+                <span id="profileEmail">dulu20l@hotmail.com</span>
+              </div>
+
+              <div class="pRow">
+                <i class="fa-solid fa-phone"></i>
+                <span id="profilePhone">01711522993</span>
+              </div>
+
+              <div class="pRow">
+                <i class="fa-solid fa-location-dot"></i>
+                <span id="profileAddress">Unnamed Road, Chittagong, Bangladesh</span>
+              </div>
+
+              <div class="profile__actions">
+                <a class="change" href="#" id="changeProfile">Change</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

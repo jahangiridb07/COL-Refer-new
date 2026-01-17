@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>COL-Referral</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">  
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+  	
+     <link rel="stylesheet" href="assets/css/style.css" />	 
+	 <link rel="stylesheet" href="assets/css/dashboard.css" />
+	 <link rel="stylesheet" href="assets/css/app.css" />
+</head>
+<body class="nc-page" data-page="step1">
+
+  <!-- NAVBAR -->
+<header class="nav">
+  <div class="container nav-inner">
+    <div class="site-logo">
+      <img src="assets/images/logo01.png" alt="COL Logo">
+    </div>
+
+    <!-- ✅ Mobile menu toggle -->
+    <button id="menuToggle" class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+      ☰
+    </button>
+
+    <!-- ✅ Give nav an id so JS can toggle it -->
+    <nav class="nav-links" id="mainNav">
+      <a href="#" class="nav-link">Home</a>
+	  <a href="new-connection.html" class="nav-link active">Package</a>
+
+      <div class="nav-dd">
+        <button class="nav-link dd-btn" type="button">
+          Coverage <span class="dd-arrow">▾</span>
+        </button>
+        <div class="dd-menu">
+          <a href="request-status.html">Request Status</a>
+          <a href="payment-status.html">Payment Status</a>
+		  <a href="payment-completed.html">Payment Completed</a>
+          <a href="application-rejected.html">Application Rejected</a>
+        </div>
+      </div>
+
+      <a href="referral.html" class="nav-link">Referral</a>
+      <a href="#" class="nav-link">Support</a>
+
+      <!-- ✅ Language dropdown inside nav for mobile (optional but useful) -->
+      <div class="nav-dd lang-dd mobile-lang">
+        <button id="langToggleMobile" class="nav-link dd-btn" type="button" aria-expanded="false">
+          EN <span class="dd-arrow">▾</span>
+        </button>
+        <div id="langMenuMobile" class="dd-menu dd-menu-right">
+          <a href="#">EN</a>
+          <a href="#">বাং</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="nav-dd lang-dd">
+		<button class="lang dd-btn" type="button">
+			EN <span class="dd-arrow">▾</span>
+		</button>
+		<div class="dd-menu dd-menu-right">
+			<a href="referral.html">EN</a>
+			<a href="index-bn.html">বাং</a>
+		</div>
+	</div>
+</header>
+
+  <main class="nc-shell">
+    <section class="nc-frame">
+
+      <aside class="nc-left">
+        <div class="nc-stepbox nc-stepbox--active">
+          <div class="nc-stepnum nc-stepnum--active">1</div>
+          <div>
+            <div class="nc-steplabel">STEP 1</div>
+            <div class="nc-steptitle">Choose Package</div>
+          </div>
+        </div>
+
+        <div class="nc-stepbox nc-stepbox--inactive">
+          <div class="nc-stepnum">2</div>
+          <div>
+            <div class="nc-steplabel">STEP 2</div>
+            <div class="nc-steptitle">Installation Details</div>
+          </div>
+        </div>
+      </aside>
+
+      <section class="nc-right">
+
+        <div class="nc-top">
+          <div class="nc-top-left">
+            <div class="nc-icon wifi-signal" id="wifiSignal">
+              <!-- <i class="fa-solid fa-wifi w1"></i>
+              <i class="fa-solid fa-wifi w2"></i>
+              <i class="fa-solid fa-wifi w3"></i> -->
+              <img src="ezgif-7614fbf97a69f4d3.gif" alt="" width="30">
+            </div>
+            <div>
+            </div>
+
+            <div class="nc-titleRow">
+              <div class="nc-h1">New Connection Request</div>
+              <a id="trackRequestBtn" class="nc-link" href="#">Track Your Request</a>
+            </div>
+          </div>
+
+          <button id="ncNextBtn" class="nc-btn-next" disabled>Next</button>
+        </div>
+
+        <div class="nc-chooseTitle">Choose Package</div>
+
+        <div class="nc-rowhead">
+          <span class="nc-chip nc-chip--gold">Smart Home Lite</span>
+          <div class="nc-partners">
+            <span class="brand bongo">
+              <img src="assets/images/bongo.png" width="50px" alt="">
+              <span class="badge-spark" aria-label="free"><img src="assets/images/spark.png" width="20px" alt=""></span>
+            </span>
+          </div>
+        </div>
+        <div class="pkg-grid" id="gridLite"></div>
+        <hr>
+        <!-- <div class="nc-rowhead">
+          <span class="nc-chip nc-chip--purple">Smart Home Regular</span>
+          <div class="nc-partners">
+            <span class="nc-pill nc-pill--corki">corki</span>
+            <span class="nc-pill">bongo</span>
+            <span class="nc-pill nc-pill--spark">✹</span>
+          </div>
+        </div> -->
+        <div class="nc-rowhead">
+          <span class="nc-chip nc-chip--purple">Smart Home Regular</span>
+
+          <div class="nc-partners">
+            <span class="brand corki"><img src="assets/images/Chorki_Logo.png" width="50px" alt=""></span>
+            <span class="sep">|</span>
+
+            <span class="brand bongo">
+              <img src="assets/images/bongo.png" width="50px" alt="">
+              <span class="badge-spark" aria-label="free"><img src="assets/images/spark.png" width="20px" alt=""></span>
+            </span>
+          </div>
+        </div>
+
+        <div class="pkg-grid" id="gridRegular"></div>
+      </section>
+    </section>
+  </main>
+
+  <!-- View Plans Drawer -->
+  <div id="vpOverlay" class="vp-overlay" aria-hidden="true"></div>
+
+  <aside id="vpDrawer" class="vp-drawer" aria-hidden="true">
+    <button id="vpClose" class="vp-close" aria-label="Close">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <div class="vp-head">
+      <div class="vp-title">Select Plan</div>
+
+      <div class="vp-speedRow">
+        <div class="vp-speed">
+          <span id="vpSpeed" class="vp-speedNum">30</span><span class="vp-speedUnit">Mbps</span>
+        </div>
+
+        <div class="vp-rate">
+          <div class="vp-rateLabel">Regular Rate</div>
+          <div class="vp-rateValue"><span id="vpRate">735</span> ৳/Month</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="vp-body">
+      <div id="vpOneMonth" class="vp-card active" tabindex="0">
+        <div>
+          <div class="vp-cardTitle">1 Month</div>
+          <div class="vp-cardSub">+ Installation fee: 1000 ৳</div>
+        </div>
+        <div class="vp-cardPrice" id="vpOneMonthPrice">1,735 ৳</div>
+      </div>
+
+      <div id="vpAcc" class="vp-acc open">
+        <button id="vpAccBtn" class="vp-accBtn" type="button">
+          <span><i class="vp-save fa-regular fa-hand-point-right"></i> Save money with advance payment</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+
+        <div class="vp-accBody">
+          <div class="vp-accBox" id="vpPlans"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="vp-footer">
+      <button id="vpContinue" class="vp-continue" disabled>Continue</button>
+    </div>
+  </aside>
+
+  <!-- Track Your Request Modal -->
+  <div id="tyrOverlay" class="modal-overlay" aria-hidden="true"></div>
+  <div id="tyrModal" class="modal" role="dialog" aria-hidden="true">
+    <div class="tyr-card">
+      <div class="tyr-head">
+        <div class="tyr-title">Track Your Request</div>
+        <button id="tyrClose" class="tyr-close" aria-label="Close">×</button>
+      </div>
+      <div class="tyr-body">
+        <label class="tyr-label">Friend Mobile Number</label>
+        <div class="tyr-phone">
+          <div class="tyr-code">+880</div>
+          <input id="tyrPhone" class="tyr-input" type="tel" placeholder="XXXXXXXXXXXX" maxlength="10" pattern="\d{10}"
+            inputmode="numeric" />
+        </div>
+        <button id="tyrContinue" class="tyr-btn" disabled>Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- OTP Verify Modal -->
+  <div id="otpOverlay" class="modal-overlay" aria-hidden="true"></div>
+  <div id="otpModal" class="modal" role="dialog" aria-hidden="true">
+    <div class="otp-card">
+      <button id="otpClose" class="otp-close" aria-label="Close">×</button>
+
+      <div class="otp-iconWrap">
+        <div class="otp-icon">
+          <span class="otp-dot"></span><span class="otp-dot"></span><span class="otp-dot"></span>
+        </div>
+      </div>
+
+      <h2 class="otp-title">Verify It’s You</h2>
+      <p class="otp-sub">Check your phone for a 6-digit OTP and<br>enter it here to verify it’s you.</p>
+
+      <div class="otp-inputs" id="otpInputs">
+        <input class="otp-in" inputmode="numeric" maxlength="1" />
+        <input class="otp-in" inputmode="numeric" maxlength="1" />
+        <input class="otp-in" inputmode="numeric" maxlength="1" />
+        <input class="otp-in" inputmode="numeric" maxlength="1" />
+        <input class="otp-in" inputmode="numeric" maxlength="1" />
+        <input class="otp-in" inputmode="numeric" maxlength="1" />
+      </div>
+
+      <button id="otpVerifyBtn" class="otp-btn" disabled>Verify</button>
+
+      <div class="otp-bottom">
+        <div class="otp-row">
+          <span>Don’t have a code?</span>
+          <a href="#" id="otpResend" class="otp-link">Resend code</a>
+        </div>
+        <a href="#" id="otpBack" class="otp-back"><i class="fa-solid fa-chevron-left"></i> Return to Track Your
+          Request</a>
+      </div>
+    </div>
+  </div>
+   <!-- FOOTER -->
+	<footer class="site-footer">
+	  <div class="footer-wrap container">
+
+		<!-- Top grid -->
+		<div class="footer-grid">
+
+		  <!-- Left: Logo + description + newsletter -->
+		  <div class="footer-col footer-brand">
+			<div class="site-logo">
+				<img src="assets/images/logo01.png" alt="COL Logo">
+			</div>
+
+			<p class="footer-desc">
+			  Bangladesh's fastest and most reliable internet service provider.
+			  Bringing high-speed connectivity to homes and businesses nationwide.
+			</p>
+		  </div>
+
+		  <!-- Products -->
+		  <div class="footer-col">
+			<div class="footer-title">Products</div>
+			<ul class="footer-links">
+			  <li><a href="#">Home Internet</a></li>
+			  <li><a href="#">Business Plans</a></li>
+			  <li><a href="#">Enterprise Solutions</a></li>
+			  <li><a href="#">IPTV Services</a></li>
+			</ul>
+		  </div>
+
+		  <!-- Company -->
+		  <div class="footer-col">
+			<div class="footer-title">Company</div>
+			<ul class="footer-links">
+			  <li><a href="#">About Us</a></li>
+			  <li><a href="#">Coverage Area</a></li>
+			  <li><a href="#">Careers</a></li>
+			  <li><a href="#">Contact</a></li>
+			</ul>
+		  </div>
+
+		  <!-- Support -->
+		  <div class="footer-col">
+			<div class="footer-title">Support</div>
+			<ul class="footer-links">
+			  <li><a href="#">Help Center</a></li>
+			  <li><a href="#">Referral Program</a></li>
+			  <li><a href="#">Customer Portal</a></li>
+			  <li><a href="#">Payment Options</a></li>
+			</ul>
+		  </div>
+		</div>
+
+		<!-- MIDDLE ROW (Newsletter left + Social right) -->
+		<div class="footer-mid">
+		  <div class="footer-mid-left">
+			<div class="footer-small-title">Subscribe to our newsletter</div>
+
+			<form class="newsletter-form" id="newsletterForm">
+			  <input
+				type="email"
+				id="newsletterEmail"
+				class="newsletter-input"
+				placeholder="Enter your email"
+				required
+			  />
+			  <button type="submit" class="newsletter-btn">Subscribe</button>
+			</form>
+		  </div>
+
+		  <div class="footer-mid-right">
+			<div class="footer-social">
+			  <a class="social-btn" href="#" aria-label="Facebook">
+				<i class="fab fa-facebook-f"></i>
+			  </a>
+
+			  <a class="social-btn" href="#" aria-label="X">
+				<i class="fab fa-twitter"></i>
+			  </a>
+
+			  <a class="social-btn" href="#" aria-label="Instagram">
+				<i class="fab fa-instagram"></i>
+			  </a>
+
+			  <a class="social-btn" href="#" aria-label="LinkedIn">
+				<i class="fab fa-linkedin-in"></i>
+			  </a>
+
+			  <a class="social-btn" href="#" aria-label="YouTube">
+				<i class="fab fa-youtube"></i>
+			  </a>
+			</div>
+		  </div>
+		</div>
+
+		<!-- BOTTOM ROW (Copyright left + Legal right) -->
+		<div class="footer-bottom">
+		  <div class="footer-copy">© 2025 SpeedNet Bangladesh. All rights reserved.</div>
+
+		  <div class="footer-legal">
+			<a href="#">Terms & Conditions</a>
+			<a href="#">Privacy Policy</a>
+			<a href="#">Customer Abuse Policy</a>
+			<a href="#">Payment Policy</a>
+		  </div>
+		</div>
+
+
+	  </div>
+	</footer>
+  <!-- Editable Advance Payment Plan Catalog (Step-1 only) -->
+  <script id="planCatalog" type="application/json">
+{
+  "15": {
+    "oneMonth": {
+      "instFee": 1000,
+      "total": 1525
+    },
+    "advance": [
+      {
+        "months": 2,
+        "instFee": 500,
+        "freeInstall": false,
+        "save": 500,
+        "total": 1550,
+        "freeMonths": 0
+      },
+      {
+        "months": 3,
+        "instFee": 0,
+        "freeInstall": true,
+        "save": 1000,
+        "total": 1575,
+        "freeMonths": 0
+      }
+    ]
+  },
+  "20": {
+    "oneMonth": {
+      "instFee": 1000,
+      "total": 1630
+    },
+    "advance": [
+      {
+        "months": 2,
+        "instFee": 500,
+        "freeInstall": false,
+        "save": 500,
+        "total": 1760,
+        "freeMonths": 0
+      },
+      {
+        "months": 3,
+        "instFee": 0,
+        "freeInstall": true,
+        "save": 1000,
+        "total": 1890,
+        "freeMonths": 0
+      },
+      {
+        "months": 5,
+        "instFee": 0,
+        "freeInstall": true,
+        "save": 1950,
+        "total": 3150,
+        "freeMonths": 1
+      },
+      {
+        "months": 10,
+        "instFee": 0,
+        "freeInstall": true,
+        "save": 2900,
+        "total": 6300,
+        "freeMonths": 2,
+        "oldTotal": 8200,
+        "justPerMonth": 525
+      }
+    ]
+  },
+  "30": {
+    "oneMonth": {
+      "instFee": 1000,
+      "total": 1735
+    },
+    "advance": [
+      {
+        "months": 2,
+        "instFee": 500,
+        "freeInstall": false,
+        "save": 500,
+        "total": 1970,
+        "freeMonths": 0
+      },
+      {
+        "months": 3,
+        "instFee": 0,
+        "freeInstall": true,
+        "save": 1000,
+        "total": 2205,
+        "freeMonths": 0
+      },
+      {
+        "months": 5,
+        "instFee": 0,
+        "freeInstall": true,
+        "save": 1950,
+        "total": 3675,
+        "freeMonths": 1
+      },
+      {
+        "months": 10,
+        "instFee": 0,
+        "freeInstall": true,
+        "save": 2900,
+        "total": 7350,
+        "freeMonths": 2,
+        "oldTotal": 9250,
+        "justPerMonth": 613
+      }
+    ]
+  },
+  "70": {
+    "oneMonth": {
+      "instFee": 1000,
+      "total": 1950
+    },
+    "advance": [
+      {
+        "months": 2,
+        "instFee": 500,
+        "freeInstall": false,
+        "save": 500,
+        "total": 2400,
+        "freeMonths": 0
+      },
+      {
+        "months": 3,
+        "instFee": 0,
+        "freeInstall": true,
+        "save": 1000,
+        "total": 2850,
+        "freeMonths": 0
+      },
+      {
+        "months": 5,
+        "instFee": 0,
+        "freeInstall": true,
+        "save": 1950,
+        "total": 4750,
+        "freeMonths": 1
+      },
+      {
+        "months": 10,
+        "instFee": 0,
+        "freeInstall": true,
+        "save": 2900,
+        "total": 9500,
+        "freeMonths": 2,
+        "oldTotal": 11400,
+        "justPerMonth": 792
+      }
+    ]
+  },
+  "80": {
+    "oneMonth": {
+      "instFee": 1000,
+      "total": 2150
+    },
+    "advance": [
+      {
+        "months": 2,
+        "instFee": 500,
+        "freeInstall": false,
+        "save": 500,
+        "total": 2800,
+        "freeMonths": 0
+      },
+      {
+        "months": 3,
+        "instFee": 0,
+        "freeInstall": true,
+        "save": 1000,
+        "total": 3450,
+        "freeMonths": 0
+      },
+      {
+        "months": 5,
+        "instFee": 0,
+        "freeInstall": true,
+        "save": 1950,
+        "total": 5750,
+        "freeMonths": 1
+      },
+      {
+        "months": 10,
+        "instFee": 0,
+        "freeInstall": true,
+        "save": 2900,
+        "total": 11500,
+        "freeMonths": 2,
+        "oldTotal": 13400,
+        "justPerMonth": 958
+      }
+    ]
+  },
+  "100": {
+    "oneMonth": {
+      "instFee": 1000,
+      "total": 2470
+    },
+    "advance": [
+      {
+        "months": 2,
+        "instFee": 500,
+        "freeInstall": false,
+        "save": 500,
+        "total": 3440,
+        "freeMonths": 0
+      },
+      {
+        "months": 3,
+        "instFee": 0,
+        "freeInstall": true,
+        "save": 1000,
+        "total": 4410,
+        "freeMonths": 0
+      },
+      {
+        "months": 5,
+        "instFee": 0,
+        "freeInstall": true,
+        "save": 1950,
+        "total": 7350,
+        "freeMonths": 1
+      },
+      {
+        "months": 10,
+        "instFee": 0,
+        "freeInstall": true,
+        "save": 2900,
+        "total": 14700,
+        "freeMonths": 2
+      }
+    ]
+  },
+  "120": {
+    "oneMonth": {
+      "instFee": 1000,
+      "total": 2970
+    },
+    "advance": [
+      {
+        "months": 2,
+        "instFee": 500,
+        "freeInstall": false,
+        "save": 500,
+        "total": 4440,
+        "freeMonths": 0
+      },
+      {
+        "months": 3,
+        "instFee": 0,
+        "freeInstall": true,
+        "save": 1000,
+        "total": 5910,
+        "freeMonths": 0
+      },
+      {
+        "months": 5,
+        "instFee": 0,
+        "freeInstall": true,
+        "save": 1950,
+        "total": 9850,
+        "freeMonths": 1
+      },
+      {
+        "months": 10,
+        "instFee": 0,
+        "freeInstall": true,
+        "save": 2900,
+        "total": 19700,
+        "freeMonths": 2
+      }
+    ]
+  },
+  "150": {
+    "oneMonth": {
+      "instFee": 1000,
+      "total": 3500
+    },
+    "advance": [
+      {
+        "months": 2,
+        "instFee": 500,
+        "freeInstall": false,
+        "save": 500,
+        "total": 5500,
+        "freeMonths": 0
+      },
+      {
+        "months": 3,
+        "instFee": 0,
+        "freeInstall": true,
+        "save": 1000,
+        "total": 7500,
+        "freeMonths": 0
+      },
+      {
+        "months": 5,
+        "instFee": 0,
+        "freeInstall": true,
+        "save": 1950,
+        "total": 12500,
+        "freeMonths": 1
+      },
+      {
+        "months": 10,
+        "instFee": 0,
+        "freeInstall": true,
+        "save": 2900,
+        "total": 25000,
+        "freeMonths": 2
+      }
+    ]
+  }
+}
+  </script>
+  <script src="assets/js/script.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+
+</body>
+</html>
